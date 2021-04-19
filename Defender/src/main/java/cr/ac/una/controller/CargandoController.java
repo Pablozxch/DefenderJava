@@ -7,7 +7,8 @@ package cr.ac.una.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
+import javafx.scene.control.*;
 
 /**
  * FXML Controller class
@@ -16,6 +17,9 @@ import javafx.fxml.Initializable;
  */
 public class CargandoController extends Controller implements Initializable
 {
+
+    @FXML
+    private ProgressBar ProgressBar;
 
     /**
      * Initializes the controller class.
