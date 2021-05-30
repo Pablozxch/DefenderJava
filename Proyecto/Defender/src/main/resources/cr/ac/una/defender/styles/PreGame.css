@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29 may. 2021, 23:31:00
+    Author     : jp015
+*/
+
+#Hbx_stats
+{
+    -fx-background-color: #ccccff;
+    
+    -fx-background-radius: 0 0 0 50;
+}
+
+#Btn_next
+{
+    -fx-background-color: #cc66ff;
+    -fx-background-radius: 0 0 0 0;
+}
+#Btn_next:hover
+{
+    -fx-background-color: #33ff33;
+    /*cuando pasa el mouser por encima*/
+}

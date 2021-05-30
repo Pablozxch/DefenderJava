@@ -7,21 +7,20 @@ package cr.ac.una.defender.controllers;
 
 import com.jfoenix.controls.*;
 import cr.ac.una.defender.utils.*;
-import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.*;
 import javafx.fxml.*;
+import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import javafx.stage.*;
 
 /**
  * FXML Controller class
  *
  * @author jp015
  */
-public class LoginController extends Controller implements Initializable
+public class MenuController extends Controller implements Initializable
 {
 
     @FXML
@@ -29,15 +28,11 @@ public class LoginController extends Controller implements Initializable
     @FXML
     private ImageView imv_fondo;
     @FXML
-    private JFXTextField Txf_user;
+    private Label Lbl_nombre;
     @FXML
-    private JFXPasswordField Txf_pass;
+    private JFXButton Btn_play;
     @FXML
-    private JFXButton Btn_login;
-    @FXML
-    private JFXButton Btn_register;
-    @FXML
-    private AnchorPane root2;
+    private JFXButton Btn_salir;
 
     /**
      * Initializes the controller class.
@@ -45,30 +40,26 @@ public class LoginController extends Controller implements Initializable
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-        //imv_fondo.fitHeightProperty().bind(root.heightProperty());
-        //imv_fondo.fitWidthProperty().bind(root.widthProperty());
-        System.out.println("puto");
-
-    }
+        // TODO
+    }    
 
     @Override
     public void initialize()
     {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @FXML
     private void click(ActionEvent event)
     {
-        if(event.getSource()==Btn_register)
+        if(event.getSource()==Btn_play)
         {
-            FlowController.getInstance().goVista("Register");
+            FlowController.getInstance().goVista("PreGame");
         }
-        if(event.getSource()==Btn_login)
+        if(event.getSource()==Btn_salir)
         {
-            FlowController.getInstance().goVista("Menu");
-            System.out.println("Pasó al menu del juego");
+            FlowController.getInstance().salir();
         }
     }
-
+    
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cr.ac.una.torneo.util;
+package cr.ac.una.defender.utils;
 
 import java.io.Serializable;
 import java.util.HashMap;

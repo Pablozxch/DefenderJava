@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/PreGame.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="cr.ac.una.defender.controllers.PreGameController">
+   <children>
+      <HBox fx:id="Hbx_stats" layoutX="233.0" prefHeight="60.0" prefWidth="367.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="Lbl_money" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="63.0" text="5000000" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="33.0" right="30.0" top="2.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="89.0" opacity="0.45">
+                     <image>
+                        <Image url="@../resources/money.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="Lbl_diamantes" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="148.0" text="123123123" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="20.0" top="2.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="43.0">
+                     <image>
+                        <Image url="@../resources/esmerlad.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="151.0" text="Stage: 0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="15.0" right="10.0" top="2.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="root2" layoutY="60.0" prefHeight="287.0" prefWidth="600.0" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <JFXButton layoutX="24.0" layoutY="45.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
+            <JFXButton layoutX="24.0" layoutY="119.0" prefHeight="37.0" prefWidth="102.0" />
+            <JFXButton layoutX="24.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="151.0" layoutY="14.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
+            <JFXButton layoutX="151.0" layoutY="76.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
+            <JFXButton layoutX="279.0" layoutY="14.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
+            <JFXButton layoutX="279.0" layoutY="76.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
+            <JFXButton layoutX="412.0" layoutY="45.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
+            <JFXButton layoutX="141.0" layoutY="156.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="141.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="141.0" layoutY="239.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="266.0" layoutY="156.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="266.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="266.0" layoutY="239.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="399.0" layoutY="156.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="399.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <JFXButton layoutX="399.0" layoutY="239.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
+            <Line endY="-15.5" layoutX="151.0" layoutY="45.0" startX="-25.0" />
+            <Line endX="25.0" endY="15.5" layoutX="126.0" layoutY="76.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutY="348.0" prefHeight="69.0" prefWidth="367.0" style="-fx-background-color: blue;" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="233.0" />
+      <JFXButton fx:id="Btn_next" layoutX="468.0" layoutY="350.0" prefHeight="69.0" prefWidth="132.0" text="Continue">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="Btn_upgrade" layoutX="366.0" layoutY="350.0" prefHeight="69.0" prefWidth="102.0">
+         <graphic>
+            <Label prefHeight="43.0" prefWidth="91.0" text="Label">
+               <graphic>
+                  <ImageView fx:id="imv_acomprar" fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Label>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>
