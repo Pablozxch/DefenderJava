@@ -10,9 +10,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/PreGame.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="cr.ac.una.defender.controllers.PreGameController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/PreGame.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.PreGameController">
    <children>
+      <ImageView fitHeight="420.0" fitWidth="600.0" opacity="0.71">
+         <image>
+            <Image url="@../resources/imgFondomejoras.jpg" />
+         </image>
+      </ImageView>
       <HBox fx:id="Hbx_stats" layoutX="233.0" prefHeight="60.0" prefWidth="367.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label fx:id="Lbl_money" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="63.0" text="5000000" HBox.hgrow="ALWAYS">
@@ -39,7 +43,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="151.0" text="Stage: 0" HBox.hgrow="ALWAYS">
+            <Label fx:id="Lbl_stage" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="151.0" text="Stage: 0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets left="15.0" right="10.0" top="2.0" />
                </HBox.margin>
@@ -48,41 +52,59 @@
       </HBox>
       <AnchorPane fx:id="root2" layoutY="60.0" prefHeight="287.0" prefWidth="600.0" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <children>
-            <JFXButton layoutX="24.0" layoutY="45.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
-            <JFXButton layoutX="24.0" layoutY="119.0" prefHeight="37.0" prefWidth="102.0" />
-            <JFXButton layoutX="24.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="151.0" layoutY="14.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
-            <JFXButton layoutX="151.0" layoutY="76.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
-            <JFXButton layoutX="279.0" layoutY="14.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
-            <JFXButton layoutX="279.0" layoutY="76.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
-            <JFXButton layoutX="412.0" layoutY="45.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: red;" />
-            <JFXButton layoutX="141.0" layoutY="156.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="141.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="141.0" layoutY="239.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="266.0" layoutY="156.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="266.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="266.0" layoutY="239.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="399.0" layoutY="156.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="399.0" layoutY="197.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <JFXButton layoutX="399.0" layoutY="239.0" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: green;" />
-            <Line endY="-15.5" layoutX="151.0" layoutY="45.0" startX="-25.0" />
-            <Line endX="25.0" endY="15.5" layoutX="126.0" layoutY="76.0" />
+            <Line endX="3.0" endY="-84.0" layoutX="410.0" layoutY="128.0" startX="-28.0" startY="-99.5" />
+            <Line endX="3.0" endY="-53.0" layoutX="410.0" layoutY="128.0" startX="-28.0" startY="-37.5" />
+            <Line endY="-15.5" layoutX="151.0" layoutY="45.0" startX="-35.0" />
+            <Line endX="25.0" endY="15.5" layoutX="126.0" layoutY="76.0" startX="-10.0" />
+            <Line endX="1.0" endY="-7.5" layoutX="278.0" layoutY="37.0" startX="-25.0" startY="-7.5" />
+            <Line endX="1.0" endY="-7.5" layoutX="278.0" layoutY="99.0" startX="-25.0" startY="-7.5" />
+            <Line endX="1.0" endY="-7.5" layoutX="269.0" layoutY="178.0" startX="-25.0" startY="-7.5" />
+            <Line endX="4.0" endY="-7.5" layoutX="399.0" layoutY="179.0" startX="-25.0" startY="-7.5" />
+            <Line endX="1.0" endY="-7.5" layoutX="269.0" layoutY="220.0" startX="-25.0" startY="-7.5" />
+            <Line endX="1.0" endY="-7.5" layoutX="269.0" layoutY="261.0" startX="-25.0" startY="-7.5" />
+            <Line endX="4.0" endY="-7.5" layoutX="399.0" layoutY="262.0" startX="-25.0" startY="-7.5" />
+            <Line endX="4.0" endY="-7.5" layoutX="399.0" layoutY="221.0" startX="-25.0" startY="-7.5" />
+            <Line endX="-9.0" endY="-18.5" layoutX="150.0" layoutY="190.0" startX="-34.0" startY="7.0" />
+            <Line endX="2.0" endY="-8.5" layoutX="139.0" layoutY="221.0" startX="-23.0" startY="-8.5" />
+            <Line endX="-31.0" endY="-30.0" layoutX="147.0" layoutY="258.0" startX="-6.0" startY="-3.5" />
+            <JFXButton fx:id="Btn_defender" layoutX="14.0" layoutY="45.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Defender" />
+            <JFXButton fx:id="Btn_Castillo" layoutX="14.0" layoutY="118.0" onAction="#click" prefHeight="37.0" prefWidth="102.0" text="Castillo" />
+            <JFXButton fx:id="Btn_mana" layoutX="14.0" layoutY="197.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Mana" />
+            <JFXButton fx:id="Btn_fuerza" layoutX="151.0" layoutY="14.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Fuerza" />
+            <JFXButton fx:id="Btn_agilidad" layoutX="151.0" layoutY="76.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Agilidad" />
+            <JFXButton fx:id="Btn_retroceso" layoutX="279.0" layoutY="14.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Retroceso" />
+            <JFXButton fx:id="Btn_ddamage" layoutX="279.0" layoutY="76.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Doble Damage" textFill="WHITE" />
+            <JFXButton fx:id="Btn_tirodoble" layoutX="412.0" layoutY="45.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Tiro Doble" />
+            <JFXButton fx:id="Btn_fireball" layoutX="141.0" layoutY="156.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Fire Ball" />
+            <JFXButton fx:id="Btn_freeze" layoutX="141.0" layoutY="197.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Freeze" />
+            <JFXButton fx:id="Btn_lightning" layoutX="141.0" layoutY="239.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Lightning" />
+            <JFXButton fx:id="Btn_meteor" layoutX="271.0" layoutY="155.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Meteor" />
+            <JFXButton fx:id="Btn_frostage" layoutX="271.0" layoutY="198.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Frost age" />
+            <JFXButton fx:id="Btn_thunderstorm" layoutX="271.0" layoutY="241.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Thunder Storm" />
+            <JFXButton fx:id="Btn_armagedon" layoutX="403.0" layoutY="149.0" onAction="#click" prefHeight="37.0" prefWidth="102.0" text="Armagedon" />
+            <JFXButton fx:id="Btn_iceage" layoutX="403.0" layoutY="197.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Ice Age" />
+            <JFXButton fx:id="Btn_ragnarok" layoutX="403.0" layoutY="238.0" onAction="#click" prefHeight="31.0" prefWidth="102.0" text="Ragnarok" />
          </children>
       </AnchorPane>
-      <Label layoutY="348.0" prefHeight="69.0" prefWidth="367.0" style="-fx-background-color: blue;" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="233.0" />
-      <JFXButton fx:id="Btn_next" layoutX="468.0" layoutY="350.0" prefHeight="69.0" prefWidth="132.0" text="Continue">
+      <Label fx:id="Lbl_info" alignment="TOP_LEFT" layoutY="348.0" prefHeight="69.0" prefWidth="367.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="233.0">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font></Label>
+      <JFXButton fx:id="Btn_next" layoutX="474.0" layoutY="350.0" onAction="#click" prefHeight="69.0" prefWidth="126.0" text="Continue">
          <font>
             <Font size="23.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="Btn_upgrade" layoutX="366.0" layoutY="350.0" prefHeight="69.0" prefWidth="102.0">
-         <graphic>
-            <Label prefHeight="43.0" prefWidth="91.0" text="Label">
-               <graphic>
-                  <ImageView fx:id="imv_acomprar" fitHeight="30.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Label>
-         </graphic>
-      </JFXButton>
+      <Label fx:id="Lbl_ccompra" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="367.0" layoutY="351.0" prefHeight="69.0" prefWidth="102.0" style="-fx-background-color: red;" text="Label" textFill="WHITE">
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </Label>
+      <JFXButton fx:id="Btn_upgrade" layoutX="382.0" layoutY="382.0" prefHeight="31.0" prefWidth="75.0" text="Upgrade" textFill="WHITE" />
+      <ImageView fx:id="imgv_ccomprar" fitHeight="37.0" fitWidth="28.0" layoutX="374.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/Logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

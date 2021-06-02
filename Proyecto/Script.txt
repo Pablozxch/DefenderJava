@@ -1,0 +1,274 @@
+/*
+Created: 28/5/2021
+Modified: 29/5/2021
+Model: Oracle 18c
+Database: Oracle 18c
+*/
+
+
+-- Drop relationships section -------------------------------------------------
+
+ALTER TABLE def_stats DROP CONSTRAINT def_stats_fk01
+;
+ALTER TABLE def_spells DROP CONSTRAINT def_spell_fk01
+;
+ALTER TABLE def_mgenerales DROP CONSTRAINT def_mgenerales_fk01
+;
+ALTER TABLE def_imagenes DROP CONSTRAINT def_imagenes_fk01
+;
+ALTER TABLE def_money DROP CONSTRAINT def_money_fk01
+;
+
+
+
+
+-- Drop keys for tables section -------------------------------------------------
+
+ALTER TABLE def_stats DROP CONSTRAINT PK_def_stats
+;
+ALTER TABLE def_spells DROP CONSTRAINT PK_def_spells
+;
+ALTER TABLE def_mgenerales DROP CONSTRAINT PK_def_mgenerales
+;
+ALTER TABLE def_money DROP CONSTRAINT PK_def_money
+;
+ALTER TABLE def_imagenes DROP CONSTRAINT PK_def_imagenes
+;
+ALTER TABLE def_user DROP CONSTRAINT PK_def_user
+;
+
+
+
+
+-- Drop tables section ---------------------------------------------------
+
+DROP TABLE def_stats
+;
+DROP TABLE def_spells
+;
+DROP TABLE def_mgenerales
+;
+DROP TABLE def_money
+;
+DROP TABLE def_imagenes
+;
+DROP TABLE def_user
+;
+
+-- Drop sequences section --------------------------------------------------- 
+
+DROP SEQUENCE def_user_seq01
+;
+
+-- Create sequences section -------------------------------------------------
+
+CREATE SEQUENCE def_user_seq01
+ INCREMENT BY 1
+ START WITH 0
+ NOMAXVALUE
+ MINVALUE 0
+ NOCACHE
+;
+
+-- Create tables section -------------------------------------------------
+
+-- Table def_user
+
+CREATE TABLE def_user(
+  user_id Number NOT NULL,
+  user_username Varchar2(50 ) NOT NULL,
+  user_pass Varchar2(50 ) NOT NULL,
+  user_lvl Integer NOT NULL,
+  user_nacc Varchar2(1 ) NOT NULL
+)
+;
+
+-- Add keys for table def_user
+
+ALTER TABLE def_user ADD CONSTRAINT PK_def_user PRIMARY KEY (user_id)
+;
+
+-- Table and Columns comments section
+
+COMMENT ON COLUMN def_user.user_id IS 'Id del usuario  '
+;
+COMMENT ON COLUMN def_user.user_username IS 'username'
+;
+COMMENT ON COLUMN def_user.user_pass IS 'password
+'
+;
+COMMENT ON COLUMN def_user.user_lvl IS 'nivel'
+;
+COMMENT ON COLUMN def_user.user_nacc IS 'si es nueva
+'
+;
+
+-- Table def_imagenes
+
+CREATE TABLE def_imagenes(
+  user_id Number NOT NULL,
+  img_user Integer NOT NULL,
+  img_ballesta Integer NOT NULL,
+  img_castillo Integer NOT NULL
+)
+;
+
+-- Add keys for table def_imagenes
+
+ALTER TABLE def_imagenes ADD CONSTRAINT PK_def_imagenes PRIMARY KEY (user_id)
+;
+
+-- Table and Columns comments section
+
+COMMENT ON COLUMN def_imagenes.img_user IS 'img del usuario'
+;
+COMMENT ON COLUMN def_imagenes.img_ballesta IS 'img de la balleta'
+;
+COMMENT ON COLUMN def_imagenes.img_castillo IS 'img del castillo'
+;
+
+-- Table def_money
+
+CREATE TABLE def_money(
+  user_id Number NOT NULL,
+  mny_dinero Integer NOT NULL,
+  mny_esmeraldas Integer NOT NULL
+)
+;
+
+-- Add keys for table def_money
+
+ALTER TABLE def_money ADD CONSTRAINT PK_def_money PRIMARY KEY (user_id)
+;
+
+-- Table and Columns comments section
+
+COMMENT ON COLUMN def_money.mny_dinero IS 'cantidad de dinero'
+;
+COMMENT ON COLUMN def_money.mny_esmeraldas IS 'esmeraldas para otras mejoras
+'
+;
+
+-- Table def_mgenerales
+
+CREATE TABLE def_mgenerales(
+  user_id Number NOT NULL,
+  mj_castillo Integer NOT NULL,
+  mj_mana Integer NOT NULL
+)
+;
+
+-- Add keys for table def_mgenerales
+
+ALTER TABLE def_mgenerales ADD CONSTRAINT PK_def_mgenerales PRIMARY KEY (user_id)
+;
+
+-- Table and Columns comments section
+
+COMMENT ON COLUMN def_mgenerales.mj_castillo IS 'para mejorar el castillo'
+;
+COMMENT ON COLUMN def_mgenerales.mj_mana IS 'cantidad de mana
+'
+;
+
+-- Table def_spells
+
+CREATE TABLE def_spells(
+  user_id Number NOT NULL,
+  spl_fireball Integer NOT NULL,
+  spl_freeze Integer NOT NULL,
+  spl_rayo Integer NOT NULL
+)
+;
+
+-- Add keys for table def_spells
+
+ALTER TABLE def_spells ADD CONSTRAINT PK_def_spells PRIMARY KEY (user_id)
+;
+
+-- Table and Columns comments section
+
+COMMENT ON COLUMN def_spells.user_id IS 'id del usuario'
+;
+COMMENT ON COLUMN def_spells.spl_fireball IS 'spell de bola de fuego'
+;
+COMMENT ON COLUMN def_spells.spl_freeze IS 'spell de hielo'
+;
+COMMENT ON COLUMN def_spells.spl_rayo IS 'spell de rayo de rayo'
+;
+
+-- Table def_stats
+
+CREATE TABLE def_stats(
+  user_id Number NOT NULL,
+  sts_fuerza Integer NOT NULL,
+  sts_agilidad Integer NOT NULL,
+  sts_retroceso Integer NOT NULL,
+  sts_ddamage Integer NOT NULL,
+  sts_tirodoble Integer NOT NULL
+)
+;
+
+-- Add keys for table def_stats
+
+ALTER TABLE def_stats ADD CONSTRAINT PK_def_stats PRIMARY KEY (user_id)
+;
+
+-- Table and Columns comments section
+
+COMMENT ON COLUMN def_stats.user_id IS 'id de usuario'
+;
+COMMENT ON COLUMN def_stats.sts_fuerza IS 'nivel de fuerza'
+;
+COMMENT ON COLUMN def_stats.sts_agilidad IS 'nivel de agilidad'
+;
+COMMENT ON COLUMN def_stats.sts_retroceso IS 'nivel del retroceso'
+;
+COMMENT ON COLUMN def_stats.sts_ddamage IS 'nivel de damage'
+;
+COMMENT ON COLUMN def_stats.sts_tirodoble IS 'nivel de tiro doble'
+;
+
+-- Trigger for sequence def_user_seq01 for column user_id in table def_user ---------
+CREATE OR REPLACE TRIGGER def_user_tgr01 BEFORE INSERT
+ON def_user FOR EACH ROW
+BEGIN
+  IF :new.user_id IS NULL OR :new.user_id < 1 THEN 
+  :new.user_id := def_user_seq01.nextval;
+  END IF;
+END;
+/
+CREATE OR REPLACE TRIGGER def_user_tgr02 AFTER UPDATE OF user_id
+ON def_user FOR EACH ROW
+BEGIN
+  RAISE_APPLICATION_ERROR(-20010,'Cannot update column user_id in table def_user as it uses sequence.');
+END;
+/
+
+
+-- Create foreign keys (relationships) section ------------------------------------------------- 
+
+ALTER TABLE def_money ADD CONSTRAINT def_money_fk01 FOREIGN KEY (user_id) REFERENCES def_user (user_id)
+;
+
+
+
+ALTER TABLE def_imagenes ADD CONSTRAINT def_imagenes_fk01 FOREIGN KEY (user_id) REFERENCES def_user (user_id)
+;
+
+
+
+ALTER TABLE def_mgenerales ADD CONSTRAINT def_mgenerales_fk01 FOREIGN KEY (user_id) REFERENCES def_user (user_id)
+;
+
+
+
+ALTER TABLE def_spells ADD CONSTRAINT def_spell_fk01 FOREIGN KEY (user_id) REFERENCES def_user (user_id)
+;
+
+
+
+ALTER TABLE def_stats ADD CONSTRAINT def_stats_fk01 FOREIGN KEY (user_id) REFERENCES def_user (user_id)
+;
+
+

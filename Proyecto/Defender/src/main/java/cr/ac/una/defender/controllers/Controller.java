@@ -5,6 +5,7 @@
  */
 package cr.ac.una.defender.controllers;
 
+import cr.ac.una.defender.clases.*;
 import java.io.*;
 import java.util.*;
 import javafx.beans.property.*;
@@ -21,28 +22,9 @@ import javafx.util.*;
 public abstract class Controller
 {
 
-    public static String getNombre()
-    {
-        return nombre;
-    }
-
-    public static void setNombre(String aNombre)
-    {
-        nombre = aNombre;
-    }
-
     private Stage stage;
     private String accion;
-    public MediaPlayer reproductor;
-    private static String nombre;
-    final ArrayList<String> listacanciones = new ArrayList();
-//    int a = 0;
-
-    public void Agregarcanciones()
-    {
-        listacanciones.add("src\\main\\resources\\cr\\ac\\una\\torneo\\musica/Aitepego.mp3");
-        listacanciones.add("src\\main\\resources\\cr\\ac\\una\\torneo\\musica/ontop.mp3");
-    }
+    private Datos datos;
 
     public String getAccion()
     {
@@ -71,31 +53,14 @@ public abstract class Controller
         ((Control) event.getSource()).fireEvent(keyEvent);
     }
 
-    public void Musica(int a)
+    public Datos getDatos()
     {
-        int b = a;
-        if(b >= listacanciones.size())
-        {
-            b = 0;
-        }
-        File archivo = new File((String) listacanciones.get(b));
-        System.out.println("El valro es " + b);
-
-        Media audio = new Media(archivo.toURI().toString());
-        reproductor = new MediaPlayer(audio);
-        reproductor.play();
-        int c = b;
-        reproductor.setVolume(0.03);
-        reproductor.setOnEndOfMedia(() ->
-        {
-            Musica(c + 1);
-        });
-
+        return datos;
     }
 
-    public void pasarmuscia(KeyEvent event)
+    public void setDatos(Datos datos)
     {
-
+        this.datos = datos;
     }
 
     public abstract void initialize();

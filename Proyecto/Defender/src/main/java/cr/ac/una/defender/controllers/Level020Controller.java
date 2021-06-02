@@ -5,9 +5,13 @@
  */
 package cr.ac.una.defender.controllers;
 
+import com.jfoenix.controls.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 
 /**
  * FXML Controller class
@@ -16,6 +20,31 @@ import javafx.fxml.Initializable;
  */
 public class Level020Controller extends Controller implements Initializable
 {
+
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private HBox Hbx_stats;
+    @FXML
+    private Label Lbl_money;
+    @FXML
+    private Label Lbl_diamantes;
+    @FXML
+    private GridPane grd;
+    @FXML
+    private JFXButton Btn_spell1;
+    @FXML
+    private JFXButton Btn_pause;
+    @FXML
+    private ImageView Imv_sp1;
+    @FXML
+    private JFXButton Btn_spell2;
+    @FXML
+    private ImageView Imv_sp2;
+    @FXML
+    private JFXButton Btn_spell3;
+    @FXML
+    private ImageView Imv_sp3;
 
     /**
      * Initializes the controller class.

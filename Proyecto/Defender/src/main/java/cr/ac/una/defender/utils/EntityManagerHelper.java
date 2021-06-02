@@ -22,7 +22,7 @@ public class EntityManagerHelper
     {
         try
         {
-            emf = Persistence.createEntityManagerFactory("TorneoPU");
+            emf = Persistence.createEntityManagerFactory("Defender");
             em = emf.createEntityManager();
         }
         catch(ExceptionInInitializerError e)
@@ -41,7 +41,7 @@ public class EntityManagerHelper
     {
         if(em == null)
         {
-            emf = Persistence.createEntityManagerFactory("TorneoPU");
+            emf = Persistence.createEntityManagerFactory("Defender");
             em = emf.createEntityManager();
         }
         return em;
