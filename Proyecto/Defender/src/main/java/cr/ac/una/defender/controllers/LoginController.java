@@ -43,7 +43,7 @@ public class LoginController extends Controller implements Initializable
     private JFXButton Btn_register;
     @FXML
     private AnchorPane root2;
-    UserDto userDto = new UserDto();
+    UserDto userDto ;
     UserService service = new UserService();
     /**
      * Initializes the controller class.
@@ -69,7 +69,8 @@ public class LoginController extends Controller implements Initializable
     {
         if(event.getSource() == Btn_register)
         {
-            FlowController.getInstance().goVista("Register");
+            FlowController.getInstance().goVista("Level020");
+            //FlowController.getInstance().goVista("Login");
         }
         if(event.getSource() == Btn_login)
         {
@@ -86,7 +87,9 @@ public class LoginController extends Controller implements Initializable
                 if(respuesta.getEstado())
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Usuario " , getStage() , "Usuario encontrado");
-                    setDatos(new Datos());
+                    userDto = (UserDto) respuesta.getResultado("both");
+                    System.out.println(userDto.toString());
+                    setDatos(userDto);
                     FlowController.getInstance().goVista("Menu");
                 }
                 else

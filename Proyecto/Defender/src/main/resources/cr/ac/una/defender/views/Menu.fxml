@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/menu.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="cr.ac.una.defender.controllers.MenuController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.MenuController">
    <children>
       <ImageView fx:id="imv_fondo" fitHeight="400.0" fitWidth="600.0">
          <image>
-            <Image url="@../resources/fondomenu.jpg" />
+            <Image url="@../resources/FondoMenu.gif" />
          </image>
       </ImageView>
-      <Label fx:id="Lbl_nombre" alignment="CENTER" layoutX="14.0" layoutY="135.0" prefHeight="35.0" prefWidth="130.0" text="Defender" textFill="WHITE">
+      <Label fx:id="Lbl_nombre" alignment="CENTER" layoutX="14.0" layoutY="48.0" prefHeight="35.0" prefWidth="130.0" text="Defender">
          <font>
             <Font name="Bodoni MT Poster Compressed" size="56.0" />
          </font>
       </Label>
-      <JFXButton fx:id="Btn_play" layoutX="288.0" layoutY="200.0" onAction="#click" prefHeight="32.0" prefWidth="59.0" text="Play" textFill="WHITE" />
-      <JFXButton fx:id="Btn_salir" layoutX="241.0" layoutY="262.0" onAction="#click" prefHeight="32.0" prefWidth="59.0" text="Salir" textFill="WHITE" />
+      <JFXButton fx:id="Btn_play" layoutX="282.0" layoutY="124.0" onAction="#click" prefHeight="32.0" prefWidth="59.0" text="Play" textFill="WHITE" />
+      <JFXButton fx:id="Btn_salir" layoutX="282.0" layoutY="184.0" onAction="#click" prefHeight="32.0" prefWidth="59.0" text="Salir" textFill="WHITE" />
    </children>
 </AnchorPane>

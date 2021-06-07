@@ -6,6 +6,7 @@
 package cr.ac.una.defender.controllers;
 
 import cr.ac.una.defender.clases.*;
+import cr.ac.una.defender.models.*;
 import java.io.*;
 import java.util.*;
 import javafx.beans.property.*;
@@ -19,12 +20,12 @@ import javafx.util.*;
  *
  * @author jp015
  */
-public abstract class Controller
+public abstract class Controller 
 {
 
     private Stage stage;
     private String accion;
-    private Datos datos;
+    private static UserDto datos = new UserDto();
 
     public String getAccion()
     {
@@ -53,12 +54,12 @@ public abstract class Controller
         ((Control) event.getSource()).fireEvent(keyEvent);
     }
 
-    public Datos getDatos()
+    public UserDto getDatos()
     {
         return datos;
     }
 
-    public void setDatos(Datos datos)
+    public void setDatos(UserDto datos)
     {
         this.datos = datos;
     }

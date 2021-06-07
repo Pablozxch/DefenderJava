@@ -5,6 +5,7 @@
  */
 package cr.ac.una.defender.models;
 
+import cr.ac.una.defender.clases.*;
 import javafx.beans.property.*;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
