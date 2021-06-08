@@ -5,22 +5,23 @@
 
 #Btn_salir
 {
-    -fx-background-color: #333333;
+    -fx-background-color: transparent;
     -fx-border-radius: 15px;
-    -fx-effect: dropshadow(gaussian,#000000,10.0, 0.9, 0.0,3.5);
+    -fx-effect: dropshadow(gaussian,transparent,10.0, 0.9, 0.0,3.5);
 }
 #Btn_play
 {
-    -fx-background-color: #333333;
+    -fx-background-color: transparent;
     -fx-border-radius: 15px;
-    -fx-effect: dropshadow(gaussian,#000000,10.0, 0.9, 0.0,3.5);
+    -fx-effect: dropshadow(gaussian,transparent,10.0, 0.9, 0.0,3.5);
 }
-#Btn_play:hover
+#Btn_play:hover  
 {
-    -fx-background-color: #333333;
+    -fx-background-color: transparent;
+    
 }
 
 #Btn_salir:hover
 {
-    -fx-background-color: #333333;
+    -fx-background-color: transparent;
 }

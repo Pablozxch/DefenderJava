@@ -5,80 +5,32 @@
  */
 package cr.ac.una.defender.clases;
 
+import javafx.scene.image.*;
+
 /**
  *
  * @author jp015
  */
-public class Monstruo
+public class Monstruo implements Accion
 {
 
     private int vida;
-    private String[] movimiento;
-    private String damage;
-    private String[] ataque;
-    private Tipo tipo;
+    private String[] caminar;
+    private String[] morir;
+    private String[] atacar;
+    private int x;
+    private int y;
+    private ImageView imagen;
 
     public Monstruo()
     {
-
     }
 
-    public Monstruo(int vida , Tipo tipo)
+    public Monstruo(int vida , int x , int y)
     {
         this.vida = vida;
-        this.tipo = tipo;
-        switch(tipo)
-        {
-            case TIPO1:
-                movimiento = new String[6];
-                movimiento[0] = "/cr/ac/una/defender/resources/Personajes/EsqueW01.png";
-                movimiento[1] = "/cr/ac/una/defender/resources/Personajes/EsqueW02.png";
-                movimiento[2] = "/cr/ac/una/defender/resources/Personajes/EsqueW03.png";
-                movimiento[3] = "/cr/ac/una/defender/resources/Personajes/EsqueW04.png";
-                movimiento[4] = "/cr/ac/una/defender/resources/Personajes/EsqueW05.png";
-                movimiento[5] = "/cr/ac/una/defender/resources/Personajes/EsqueW06.png";
-                damage = "";
-                ataque = new String[3];
-                ataque[0] = "/cr/ac/una/defender/resources/Personajes/EsqueA01.png";
-                ataque[1] = "/cr/ac/una/defender/resources/Personajes/EsqueA02.png";
-                ataque[2] = "/cr/ac/una/defender/resources/Personajes/EsqueA03.png";
-                break;
-            case TIPO2:
-                // movimiento = "";
-                damage = "";
-                ataque[0] = "/cr/ac/una/defender/resources/Personajes/EsqueW01.png";
-                ataque[1] = "/cr/ac/una/defender/resources/Personajes/EsqueW02.png";
-                ataque[2] = "/cr/ac/una/defender/resources/Personajes/EsqueW03.png";
-                break;
-            case TIPO3:
-                //  movimiento = "";
-                damage = "";
-                ataque[0] = "/cr/ac/una/defender/resources/Personajes/EsqueW01.png";
-                ataque[1] = "/cr/ac/una/defender/resources/Personajes/EsqueW02.png";
-                ataque[2] = "/cr/ac/una/defender/resources/Personajes/EsqueW03.png";
-                break;
-            case TIPO4:
-                // movimiento = "";
-                damage = "";
-                ataque[0] = "/cr/ac/una/defender/resources/Personajes/EsqueW01.png";
-                ataque[1] = "/cr/ac/una/defender/resources/Personajes/EsqueW02.png";
-                ataque[2] = "/cr/ac/una/defender/resources/Personajes/EsqueW03.png";
-                break;
-            case TIPO5:
-                //movimiento = "";
-                damage = "";
-                ataque[0] = "/cr/ac/una/defender/resources/Personajes/EsqueW01.png";
-                ataque[1] = "/cr/ac/una/defender/resources/Personajes/EsqueW02.png";
-                ataque[2] = "/cr/ac/una/defender/resources/Personajes/EsqueW03.png";
-                break;
-            case TIPO6:
-                //movimiento = "";
-                damage = "";
-                ataque[0] = "/cr/ac/una/defender/resources/Personajes/EsqueW01.png";
-                ataque[1] = "/cr/ac/una/defender/resources/Personajes/EsqueW02.png";
-                ataque[2] = "/cr/ac/una/defender/resources/Personajes/EsqueW03.png";
-                break;
-        }
+        this.x = x;
+        this.y = y;
     }
 
     public int getVida()
@@ -91,46 +43,95 @@ public class Monstruo
         this.vida = vida;
     }
 
-    public String[] getMovimiento()
+    public String[] getCaminar()
     {
-        return movimiento;
+        return caminar;
     }
 
-    public void setMovimiento(String[] movimiento)
+    public void setCaminar(String[] caminar)
     {
-        this.movimiento = movimiento;
+        this.caminar = caminar;
     }
 
-    public String getDamage()
+    public String[] getMorir()
     {
-        return damage;
+        return morir;
     }
 
-    public void setDamage(String damage)
+    public void setMorir(String[] morir)
     {
-        this.damage = damage;
+        this.morir = morir;
     }
 
-
-
-    public Tipo getTipo()
+    public String[] getAtacar()
     {
-        return tipo;
+        return atacar;
     }
 
-    public void setTipo(Tipo tipo)
+    public void setAtacar(String[] atacar)
     {
-        this.tipo = tipo;
+        this.atacar = atacar;
     }
 
-    public String[] getAtaque()
+    public int getX()
     {
-        return ataque;
+        return x;
     }
 
-    public void setAtaque(String[] ataque)
+    public void setX(int x)
     {
-        this.ataque = ataque;
+        this.x = x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public void setY(int y)
+    {
+        this.y = y;
+    }
+
+    public ImageView getImagen()
+    {
+        return imagen;
+    }
+
+    public void setImagen(ImageView imagen)
+    {
+        this.imagen = imagen;
+    }
+
+    @Override
+    public void caminar()
+    {
+        for(String caminar1 : caminar)
+        {
+            ImageView ss= new ImageView(new Image(caminar1));
+            ss.setX(500);
+            ss.setY(200);
+            ss.visibleProperty().set(true);
+            System.out.println("asd"+caminar1);
+        }
+    }
+
+    @Override
+    public void atacar()
+    {
+        for(String atacar1 : atacar)
+        {
+            System.out.println(atacar1);
+        }
+    }
+
+    @Override
+    public void morir()
+    {
+        for(String morir1 : morir)
+        {
+            System.out.println(morir1);
+        }
     }
 
 }

@@ -9,46 +9,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="589.0" prefWidth="686.0" stylesheets="@../styles/Login.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.LoginController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../styles/Login.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.LoginController">
    <children>
-      <ImageView fx:id="imv_fondo" fitHeight="589.0" fitWidth="686.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="imv_fondo" fitHeight="1083.0" fitWidth="1924.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../resources/imgFondo.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="root2" layoutX="157.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.8" prefHeight="356.0" prefWidth="372.0" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="157.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="117.0">
+      <AnchorPane fx:id="root2" layoutX="579.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.8" prefHeight="768.0" prefWidth="767.0" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="579.0" AnchorPane.rightAnchor="574.0" AnchorPane.topAnchor="121.0">
          <children>
-            <Label alignment="CENTER" layoutX="122.0" layoutY="14.0" prefHeight="48.0" prefWidth="128.0" text="Login" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0">
+            <Label alignment="CENTER" layoutX="110.0" layoutY="16.0" prefHeight="48.0" prefWidth="128.0" text="Login" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="134.0">
                <font>
-                  <Font name="Calibri" size="40.0" />
+                  <Font name="Calibri" size="96.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="125.0" layoutY="74.0" prefHeight="4.0" prefWidth="128.0" style="-fx-background-color: #A64FBB;" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" />
-            <JFXTextField fx:id="Txf_user" labelFloat="true" layoutX="84.0" layoutY="130.0" prefHeight="25.0" prefWidth="235.0" promptText="Username" unFocusColor="#d337bc" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="53.0">
+            <AnchorPane layoutX="74.0" layoutY="119.0" prefHeight="9.0" prefWidth="615.0" style="-fx-background-color: #A64FBB;" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="78.0" />
+            <JFXTextField fx:id="Txf_user" layoutX="261.0" layoutY="195.0" prefHeight="150.0" prefWidth="400.0" promptText="Username" unFocusColor="#d337bc" viewOrder="1.0">
                <font>
-                  <Font size="17.0" />
+                  <Font size="50.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField fx:id="Txf_pass" labelFloat="true" layoutX="84.0" layoutY="200.0" prefHeight="38.0" prefWidth="235.0" promptText="Password" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="53.0">
+            <JFXPasswordField fx:id="Txf_pass" layoutX="257.0" layoutY="428.0" prefHeight="150.0" prefWidth="400.0" promptText="Password" unFocusColor="#d337bc">
                <font>
-                  <Font size="17.0" />
+                  <Font size="50.0" />
                </font></JFXPasswordField>
-            <JFXButton fx:id="Btn_register" layoutX="56.0" layoutY="276.0" onAction="#click" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="56.0">
+            <JFXButton fx:id="Btn_register" layoutX="81.0" layoutY="674.0" onAction="#click" prefHeight="75.0" prefWidth="268.0" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="81.0">
                <font>
                   <Font size="23.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="Btn_login" layoutX="237.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#click" onKeyPressed="#keypressed" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="30.0">
+            <JFXButton fx:id="Btn_login" layoutX="426.0" layoutY="753.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#click" onKeyPressed="#keypressed" prefHeight="75.0" prefWidth="268.0" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="22.0">
                <font>
                   <Font size="23.0" />
                </font>
             </JFXButton>
-            <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="39.0" layoutY="130.0" AnchorPane.leftAnchor="39.0">
+            <ImageView fitHeight="156.0" fitWidth="166.0" layoutX="53.0" layoutY="199.0" preserveRatio="true" AnchorPane.leftAnchor="53.0">
                <image>
                   <Image url="@../resources/img_login_username.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="39.0" layoutY="200.0" AnchorPane.leftAnchor="39.0">
+            <ImageView fitHeight="148.0" fitWidth="137.0" layoutX="68.0" layoutY="442.0" AnchorPane.leftAnchor="68.0">
                <image>
                   <Image url="@../resources/img_login_password.png" />
                </image>

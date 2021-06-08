@@ -20,12 +20,13 @@ import javafx.util.*;
  *
  * @author jp015
  */
-public abstract class Controller 
+public abstract class Controller
 {
 
     private Stage stage;
     private String accion;
     private static UserDto datos = new UserDto();
+    public AudioClip musica;
 
     public String getAccion()
     {
@@ -44,6 +45,7 @@ public abstract class Controller
 
     public Stage getStage()
     {
+       
         return stage;
     }
 
@@ -64,5 +66,33 @@ public abstract class Controller
         this.datos = datos;
     }
 
+    public void musica()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Menu.mp3").toString());
+        musica.setCycleCount(AudioClip.INDEFINITE);
+        musica.setVolume(0.05);
+        musica.play();
+
+    }
+
+    public void sonidobotones()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Boton.wav").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(0.04);
+        musica.play();
+    }
+
+    public void paramusica()
+    {
+        musica.stop();
+    }
+    public void comprado()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Cmonedas.wav").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(0.04);
+        musica.play();
+    }
     public abstract void initialize();
 }

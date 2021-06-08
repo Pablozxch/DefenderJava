@@ -40,26 +40,30 @@ public class MenuController extends Controller implements Initializable
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-        // TODO
-    }    
+
+       musica();
+    }
 
     @Override
     public void initialize()
     {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @FXML
     private void click(ActionEvent event)
     {
-        if(event.getSource()==Btn_play)
+        if(event.getSource() == Btn_play)
         {
+            paramusica();
+            sonidobotones();
             FlowController.getInstance().goVista("PreGame");
         }
-        if(event.getSource()==Btn_salir)
+        if(event.getSource() == Btn_salir)
         {
+            sonidobotones();
             FlowController.getInstance().salir();
         }
     }
-    
+
 }

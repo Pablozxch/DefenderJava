@@ -66,7 +66,7 @@ public class FlowController
         this.mainStage = stage;
         this.idioma = idioma;
     }
-    
+
     private FXMLLoader getLoader(String name)
     {
         FXMLLoader loader = loaders.get(name);
@@ -97,8 +97,9 @@ public class FlowController
     {
         try
         {
+
             this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("/cr/ac/una/defender/views/" + nombreVista + ".fxml") , this.idioma)));
-            this.mainStage.centerOnScreen();
+            this.mainStage.setFullScreen(true);
             this.mainStage.show();
         }
         catch(IOException ex)

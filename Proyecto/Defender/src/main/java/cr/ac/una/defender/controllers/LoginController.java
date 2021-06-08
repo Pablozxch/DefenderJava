@@ -52,10 +52,7 @@ public class LoginController extends Controller implements Initializable
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-        //imv_fondo.fitHeightProperty().bind(root.heightProperty());
-        //imv_fondo.fitWidthProperty().bind(root.widthProperty());
-        System.out.println("puto");
-
+        
     }
 
     @Override
@@ -69,15 +66,15 @@ public class LoginController extends Controller implements Initializable
     {
         if(event.getSource() == Btn_register)
         {
+          //  FlowController.getInstance().goVista("Register");
             FlowController.getInstance().goVista("Level020");
-            //FlowController.getInstance().goVista("Login");
         }
         if(event.getSource() == Btn_login)
         {
 
             if(Txf_pass.getText().isEmpty() || Txf_user.getText().isEmpty())
             {
-                new Mensaje().showModal(Alert.AlertType.WARNING , "Usuario " , getStage() , "Faltan Datos");
+                new Mensaje().showModal(Alert.AlertType.WARNING , "Usuario " , Btn_register.getScene().getWindow() , "Faltan Datos");
             }
             else
             {
@@ -86,7 +83,7 @@ public class LoginController extends Controller implements Initializable
                 Respuesta respuesta = service.getUser(username , pass);
                 if(respuesta.getEstado())
                 {
-                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Usuario " , getStage() , "Usuario encontrado");
+                   // new Mensaje().showModal(Alert.AlertType.INFORMATION , "Usuario " , getStage() , "Usuario encontrado");
                     userDto = (UserDto) respuesta.getResultado("both");
                     System.out.println(userDto.toString());
                     setDatos(userDto);

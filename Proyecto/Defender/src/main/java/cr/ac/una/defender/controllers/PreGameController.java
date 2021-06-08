@@ -82,7 +82,6 @@ public class PreGameController extends Controller implements Initializable
     /**
      * Initializes the controller class.
      */
-    int dinero = 0;
     int esmeraldas = 0;
     int fuerza = 0;
     int agilidad = 0;
@@ -112,13 +111,13 @@ public class PreGameController extends Controller implements Initializable
     {
         llenartodo();
         llenarspells();
-        acutalizarpantalla();
+        setinfo();
 
     }
 
     public void llenartodo()
     {
-        dinero = getDatos().getDinero().intValue();
+        esmeraldas = getDatos().getDinero().intValue();
         esmeraldas = getDatos().getEsmeralda().intValue();
         fuerza = getDatos().getLvlFuerza().intValue();
         agilidad = getDatos().getLvlAgilidad().intValue();
@@ -139,87 +138,117 @@ public class PreGameController extends Controller implements Initializable
         {
             case 4:
                 meteor = 1;
+
                 break;
             case 5:
                 meteor = 2;
+
                 break;
             case 6:
                 meteor = 3;
+
                 break;
             case 7:
                 armagedon = 1;
+
                 break;
             case 8:
                 armagedon = 2;
+
                 break;
             case 9:
                 armagedon = 3;
+
                 break;
             default:
+
                 break;
         }
         switch(freeze)
         {
             case 4:
                 frostage = 1;
+
                 break;
             case 5:
                 frostage = 2;
+
                 break;
             case 6:
                 frostage = 3;
+
                 break;
 
             case 7:
                 aceage = 1;
+
                 break;
             case 8:
                 aceage = 2;
+
                 break;
             case 9:
                 aceage = 3;
+
                 break;
             default:
+
                 break;
         }
         switch(lightning)
         {
             case 4:
                 thunderstorm = 1;
+
                 break;
             case 5:
                 thunderstorm = 2;
+
                 break;
             case 6:
                 thunderstorm = 3;
+
                 break;
             case 7:
-                ragnarok = 3;
+                ragnarok = 1;
+
                 break;
             case 8:
-                ragnarok = 3;
+                ragnarok = 2;
+
                 break;
             case 9:
                 ragnarok = 3;
+
                 break;
             default:
+
                 break;
         }
 
     }
 
-    public void acutalizarpantalla()
+    public void setinfo()
     {
-        Lbl_money.setText(String.valueOf(dinero));
+        Lbl_money.setText(String.valueOf(esmeraldas));
         Lbl_diamantes.setText(String.valueOf(esmeraldas));
         Lbl_stage.setText("Stage :" + String.valueOf(lvl));
+    }
+
+    public void acutalizarpantalla()
+    {
+        Lbl_money.setText(String.valueOf(esmeraldas));
+        Lbl_diamantes.setText(String.valueOf(esmeraldas));
+        Lbl_stage.setText("Stage :" + String.valueOf(lvl));
+        sonidobotones();
+        comprado();
         mostrarinfo();
     }
 
     public void mostrarinfo()
     {
-        Lbl_info.setText("En esta parte se van a mostrar todo el tipo de \n informacion sobre las mejoras "
-                  + "que puedes \nrealizar  en el juego");
+        Lbl_info.setText("En esta parte se van a mostrar todo el tipo de informacion sobre las mejoras "
+                  + "que\n puedes realizar  en el juego");
     }
 
     @FXML
@@ -237,24 +266,31 @@ public class PreGameController extends Controller implements Initializable
             switch(vida)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa el daño de la ballesta \n"
+                    Lbl_info.setText("Incrementa el daño de la ballesta "
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("200");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa el daño de la ballesta \n"
+                    Lbl_info.setText("Incrementa el daño de la ballesta "
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("400");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa el daño de la ballesta \n"
+                    Lbl_info.setText("Incrementa el daño de la ballesta "
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
 
@@ -264,31 +300,32 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(vida == 0 & dinero >= 200)
+                if(vida == 0 & esmeraldas >= 200)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 200;
+                    esmeraldas -= 200;
                     vida = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(vida == 1 & dinero >= 400)
+                else if(vida == 1 & esmeraldas >= 400)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 400;
+                    esmeraldas -= 400;
                     vida = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(vida == 2 & dinero >= 600)
+                else if(vida == 2 & esmeraldas >= 600)
                 {
                     b = true;
-                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 600;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage(), "Comprado con exito");
+                    esmeraldas -= 600;
                     vida = 3;
                     acutalizarpantalla();
 
                 }
+
             }
 
             else
@@ -303,24 +340,31 @@ public class PreGameController extends Controller implements Initializable
             switch(mana)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa la cantidad de mana\n"
+                    Lbl_info.setText("Incrementa la cantidad de mana"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("250");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa la cantidad de mana\n"
+                    Lbl_info.setText("Incrementa la cantidad de mana"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("450");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa la cantidad de mana\n"
+                    Lbl_info.setText("Incrementa la cantidad de mana"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("650");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
@@ -329,27 +373,27 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(mana == 0 & dinero >= 250)
+                if(mana == 0 & esmeraldas >= 250)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     mana = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(mana == 1 & dinero >= 450)
+                else if(mana == 1 & esmeraldas >= 450)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     mana = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(mana == 2 & dinero >= 650)
+                else if(mana == 2 & esmeraldas >= 650)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     mana = 3;
                     acutalizarpantalla();
 
@@ -368,24 +412,31 @@ public class PreGameController extends Controller implements Initializable
             switch(fuerza)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa la cantidad de fuerza\n"
+                    Lbl_info.setText("Incrementa la cantidad de fuerza"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa la cantidad de fuerza\n"
+                    Lbl_info.setText("Incrementa la cantidad de fuerza"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa la cantidad de fuerza\n"
+                    Lbl_info.setText("Incrementa la cantidad de fuerza"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+                    sonidobotones();
+
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
 
@@ -395,27 +446,27 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(mana == 0 & dinero >= 300)
+                if(fuerza == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     fuerza = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(mana == 1 & dinero >= 600)
+                else if(fuerza == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     fuerza = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(mana == 2 & dinero >= 800)
+                else if(fuerza == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     fuerza = 3;
                     acutalizarpantalla();
 
@@ -434,24 +485,31 @@ public class PreGameController extends Controller implements Initializable
             switch(agilidad)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa la cantidad de agilidad\n"
+                    Lbl_info.setText("Incrementa la cantidad de agilidad"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa la cantidad de agilidad\n"
+                    Lbl_info.setText("Incrementa la cantidad de agilidad"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa la cantidad de agilidad\n"
+                    Lbl_info.setText("Incrementa la cantidad de agilidad"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
@@ -461,27 +519,27 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(agilidad == 0 & dinero >= 300)
+                if(agilidad == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     agilidad = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(agilidad == 1 & dinero >= 600)
+                else if(agilidad == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     agilidad = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(agilidad == 2 & dinero >= 800)
+                else if(agilidad == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     agilidad = 3;
                     acutalizarpantalla();
 
@@ -501,54 +559,61 @@ public class PreGameController extends Controller implements Initializable
             switch(retroceso)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa la cantidad de retroceso\n"
+                    Lbl_info.setText("Incrementa la cantidad de retroceso"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa la cantidad de retroceso\n"
+                    Lbl_info.setText("Incrementa la cantidad de retroceso"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa la cantidad de retroceso\n"
+                    Lbl_info.setText("Incrementa la cantidad de retroceso"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
 
         }
-        else if(event.getSource() == Btn_upgrade & "5".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade & "5".equals(Lbl_info.getId()) & fuerza >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(retroceso == 0 & dinero >= 300)
+                if(retroceso == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     retroceso = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(retroceso == 1 & dinero >= 600)
+                else if(retroceso == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     retroceso = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(retroceso == 2 & dinero >= 800)
+                else if(retroceso == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     retroceso = 3;
                     acutalizarpantalla();
 
@@ -567,53 +632,60 @@ public class PreGameController extends Controller implements Initializable
             switch(ddamage)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa el porcentaje del daño doble\n"
+                    Lbl_info.setText("Incrementa el porcentaje del daño doble"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa el porcentaje del daño doble\n"
+                    Lbl_info.setText("Incrementa el porcentaje del daño doble"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa el porcentaje del daño doble\n"
+                    Lbl_info.setText("Incrementa el porcentaje del daño doble"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "6".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade & "6".equals(Lbl_info.getId()) & agilidad >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(ddamage == 0 & dinero >= 300)
+                if(ddamage == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     ddamage = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(ddamage == 1 & dinero >= 600)
+                else if(ddamage == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     ddamage = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(ddamage == 2 & dinero >= 800)
+                else if(ddamage == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     ddamage = 3;
                     acutalizarpantalla();
 
@@ -633,53 +705,60 @@ public class PreGameController extends Controller implements Initializable
             switch(tirodobble)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa el porcentajede tiro doble\n"
+                    Lbl_info.setText("Incrementa el porcentajede tiro doble"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa el porcentajede tiro doble\n"
+                    Lbl_info.setText("Incrementa el porcentajede tiro doble"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa el porcentajede tiro doble\n"
+                    Lbl_info.setText("Incrementa el porcentajede tiro doble"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "7".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade & "7".equals(Lbl_info.getId()) & agilidad >= 3 & fuerza >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(tirodobble == 0 & dinero >= 300)
+                if(tirodobble == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     tirodobble = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(tirodobble == 1 & dinero >= 600)
+                else if(tirodobble == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     tirodobble = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(tirodobble == 2 & dinero >= 800)
+                else if(tirodobble == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     tirodobble = 3;
                     acutalizarpantalla();
 
@@ -699,24 +778,31 @@ public class PreGameController extends Controller implements Initializable
             switch(fireball)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa el porcentajede tiro doble\n"
+                    Lbl_info.setText("Incrementa el porcentajede tiro doble"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa el porcentajede tiro doble\n"
+                    Lbl_info.setText("Incrementa el porcentajede tiro doble"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa el porcentajede tiro doble\n"
+                    Lbl_info.setText("Incrementa el porcentajede tiro doble"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
@@ -726,27 +812,27 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(fireball == 0 & dinero >= 300)
+                if(fireball == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     fireball = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(fireball == 1 & dinero >= 600)
+                else if(fireball == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     fireball = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(fireball == 2 & dinero >= 800)
+                else if(fireball == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     fireball = 3;
                     acutalizarpantalla();
 
@@ -766,24 +852,28 @@ public class PreGameController extends Controller implements Initializable
             switch(freeze)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa el tiempo de hielo\n"
+                    Lbl_info.setText("Incrementa el tiempo de hielo"
                               + "Current: " + 2 + " \n"
                               + "Next: " + 4);
                     Lbl_ccompra.setText("300");
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa el tiempo de hielo\n"
+                    Lbl_info.setText("Incrementa el tiempo de hielo"
                               + "Current: " + 6 + " \n"
                               + "Next: " + 8);
                     Lbl_ccompra.setText("600");
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa el tiempo de hielo\n"
+                    Lbl_info.setText("Incrementa el tiempo de hielo"
                               + "Current: " + 8 + " \n"
                               + "Next: " + 10);
                     Lbl_ccompra.setText("800");
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
@@ -793,27 +883,27 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(freeze == 0 & dinero >= 300)
+                if(freeze == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     freeze = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(freeze == 1 & dinero >= 600)
+                else if(freeze == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     freeze = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(freeze == 2 & dinero >= 800)
+                else if(freeze == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     freeze = 3;
                     acutalizarpantalla();
 
@@ -833,24 +923,28 @@ public class PreGameController extends Controller implements Initializable
             switch(lightning)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa el daño del rayo\n"
+                    Lbl_info.setText("Incrementa el daño del rayo"
                               + "Current: " + 10 + " \n"
                               + "Next: " + 15);
                     Lbl_ccompra.setText("300");
+                    sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa el daño del rayo\n"
+                    Lbl_info.setText("Incrementa el daño del rayo"
                               + "Current: " + 15 + " \n"
                               + "Next: " + 20);
                     Lbl_ccompra.setText("600");
+                    sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa el daño del rayo\n"
+                    Lbl_info.setText("Incrementa el daño del rayo"
                               + "Current: " + 20 + " \n"
                               + "Next: " + 25);
                     Lbl_ccompra.setText("800");
+                    sonidobotones();
                     break;
                 default:
+                    sonidobotones();
                     break;
             }
         }
@@ -859,27 +953,27 @@ public class PreGameController extends Controller implements Initializable
             Boolean b = false;
             if(b == false)
             {
-                if(lightning == 0 & dinero >= 300)
+                if(lightning == 0 & esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 250;
+                    esmeraldas -= 250;
                     lightning = 1;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(freeze == 1 & dinero >= 600)
+                else if(freeze == 1 & esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 450;
+                    esmeraldas -= 450;
                     lightning = 2;
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(lightning == 2 & dinero >= 800)
+                else if(lightning == 2 & esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
-                    dinero -= 650;
+                    esmeraldas -= 650;
                     lightning = 3;
                     acutalizarpantalla();
 
@@ -896,33 +990,424 @@ public class PreGameController extends Controller implements Initializable
         {
             imgv_ccomprar.setImage(new Image("/cr/ac/una/defender/resources/esmerlad.png"));
             Lbl_info.setId("11");
+            switch(meteor)
+            {
+                case 0:
+                    Lbl_info.setText("Incrementa el daño del fireball lvl2"
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
+                    Lbl_ccompra.setText("1000");
+                    sonidobotones();
+                    break;
+                case 1:
+                    Lbl_info.setText("Incrementa el daño del fireball lvl2"
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
+                    Lbl_ccompra.setText("1200");
+                    sonidobotones();
+                    break;
+                case 2:
+                    Lbl_info.setText("Incrementa el daño del fireball lvl2"
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
+                    Lbl_ccompra.setText("1400");
+                    sonidobotones();
+                    break;
+                default:
+                    sonidobotones();
+                    break;
+            }
         }
+        else if(event.getSource() == Btn_upgrade & "11".equals(Lbl_info.getId()) & fireball >= 3)
+        {
+            Boolean b = false;
+            if(b == false)
+            {
+                if(meteor == 0 & esmeraldas >= 300)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 250;
+                    meteor = 1;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(meteor == 1 & esmeraldas >= 600)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 450;
+                    meteor = 2;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(meteor == 2 & esmeraldas >= 800)
+                {
+                    b = true;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 650;
+                    meteor = 3;
+                    acutalizarpantalla();
+
+                }
+            }
+
+            else
+            {
+                new Mensaje().showModal(Alert.AlertType.ERROR , "Compra " , getStage() , "No hay Dinero");
+            }
+        }
+
         else if(event.getSource() == Btn_frostage)
         {
             imgv_ccomprar.setImage(new Image("/cr/ac/una/defender/resources/esmerlad.png"));
             Lbl_info.setId("12");
+            switch(frostage)
+            {
+                case 0:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
+                    Lbl_ccompra.setText("1000");
+                    sonidobotones();
+                    break;
+                case 1:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
+                    Lbl_ccompra.setText("1200");
+                    sonidobotones();
+                    break;
+                case 2:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
+                    Lbl_ccompra.setText("1400");
+                    sonidobotones();
+                    break;
+                default:
+                    sonidobotones();
+                    break;
+            }
         }
+        else if(event.getSource() == Btn_upgrade & "12".equals(Lbl_info.getId()) & freeze >= 3)
+        {
+            Boolean b = false;
+            if(b == false)
+            {
+                if(frostage == 0 & esmeraldas >= 300)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 250;
+                    frostage = 1;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(frostage == 1 & esmeraldas >= 600)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 450;
+                    frostage = 2;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(frostage == 2 & esmeraldas >= 800)
+                {
+                    b = true;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 650;
+                    frostage = 3;
+                    acutalizarpantalla();
+
+                }
+            }
+
+            else
+            {
+                new Mensaje().showModal(Alert.AlertType.ERROR , "Compra " , getStage() , "No hay Dinero");
+            }
+        }
+
         else if(event.getSource() == Btn_thunderstorm)
         {
             imgv_ccomprar.setImage(new Image("/cr/ac/una/defender/resources/esmerlad.png"));
             Lbl_info.setId("13");
+            switch(thunderstorm)
+            {
+                case 0:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
+                    Lbl_ccompra.setText("1000");
+                    sonidobotones();
+                    break;
+                case 1:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
+                    Lbl_ccompra.setText("1200");
+                    sonidobotones();
+                    break;
+                case 2:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
+                    Lbl_ccompra.setText("1400");
+                    sonidobotones();
+                    break;
+                default:
+                    sonidobotones();
+                    break;
+            }
         }
+        else if(event.getSource() == Btn_upgrade & "13".equals(Lbl_info.getId()) & lightning >= 3)
+        {
+            Boolean b = false;
+            if(b == false)
+            {
+                if(thunderstorm == 0 & esmeraldas >= 300)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 250;
+                    thunderstorm = 1;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(thunderstorm == 1 & esmeraldas >= 600)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 450;
+                    thunderstorm = 2;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(thunderstorm == 2 & esmeraldas >= 800)
+                {
+                    b = true;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 650;
+                    thunderstorm = 3;
+                    acutalizarpantalla();
+
+                }
+            }
+
+            else
+            {
+                new Mensaje().showModal(Alert.AlertType.ERROR , "Compra " , getStage() , "No hay Dinero");
+            }
+        }
+
         else if(event.getSource() == Btn_iceage)
         {
             imgv_ccomprar.setImage(new Image("/cr/ac/una/defender/resources/esmerlad.png"));
             Lbl_info.setId("14");
+            switch(aceage)
+            {
+                case 0:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
+                    Lbl_ccompra.setText("1000");
+                    sonidobotones();
+                    break;
+                case 1:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
+                    Lbl_ccompra.setText("1200");
+                    sonidobotones();
+                    break;
+                case 2:
+                    Lbl_info.setText("Incrementa el tiempo de congelacion"
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
+                    Lbl_ccompra.setText("1400");
+                    sonidobotones();
+                    break;
+                default:
+                    sonidobotones();
+                    break;
+            }
         }
+        else if(event.getSource() == Btn_upgrade & "15".equals(Lbl_info.getId()) & frostage >= 3)
+        {
+            Boolean b = false;
+            if(b == false)
+            {
+                if(aceage == 0 & esmeraldas >= 300)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 250;
+                    aceage = 1;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(aceage == 1 & esmeraldas >= 600)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 450;
+                    aceage = 2;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(aceage == 2 & esmeraldas >= 800)
+                {
+                    b = true;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 650;
+                    aceage = 3;
+                    acutalizarpantalla();
+
+                }
+            }
+
+            else
+            {
+                new Mensaje().showModal(Alert.AlertType.ERROR , "Compra " , getStage() , "No hay Dinero");
+            }
+        }
+
         else if(event.getSource() == Btn_armagedon)
         {
             imgv_ccomprar.setImage(new Image("/cr/ac/una/defender/resources/esmerlad.png"));
             Lbl_info.setId("15");
+            switch(armagedon)
+            {
+                case 0:
+                    Lbl_info.setText("Incrementa el el daño de armagedon"
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
+                    Lbl_ccompra.setText("1000");
+                    sonidobotones();
+                    break;
+                case 1:
+                    Lbl_info.setText("Incrementa el el daño de armagedon"
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
+                    Lbl_ccompra.setText("1200");
+                    sonidobotones();
+                    break;
+                case 2:
+                    Lbl_info.setText("Incrementa el daño de armagedon"
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
+                    Lbl_ccompra.setText("1400");
+                    sonidobotones();
+                    break;
+                default:
+                    sonidobotones();
+                    break;
+            }
         }
+        else if(event.getSource() == Btn_upgrade & "15".equals(Lbl_info.getId()) & frostage >= 3)
+        {
+            Boolean b = false;
+            if(b == false)
+            {
+                if(aceage == 0 & esmeraldas >= 300)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 250;
+                    aceage = 1;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(aceage == 1 & esmeraldas >= 600)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 450;
+                    aceage = 2;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(aceage == 2 & esmeraldas >= 800)
+                {
+                    b = true;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 650;
+                    aceage = 3;
+                    acutalizarpantalla();
+
+                }
+            }
+
+            else
+            {
+                new Mensaje().showModal(Alert.AlertType.ERROR , "Compra " , getStage() , "No hay Dinero");
+            }
+        }
+
         else if(event.getSource() == Btn_ragnarok)
         {
             imgv_ccomprar.setImage(new Image("/cr/ac/una/defender/resources/esmerlad.png"));
             Lbl_info.setId("16");
+            switch(ragnarok)
+            {
+                case 0:
+                    Lbl_info.setText("Incrementa el el daño de armagedon"
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
+                    Lbl_ccompra.setText("1000");
+                    sonidobotones();
+                    break;
+                case 1:
+                    Lbl_info.setText("Incrementa el el daño de armagedon"
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
+                    Lbl_ccompra.setText("1200");
+                    sonidobotones();
+                    break;
+                case 2:
+                    Lbl_info.setText("Incrementa el daño de armagedon"
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
+                    Lbl_ccompra.setText("1400");
+                    sonidobotones();
+                    break;
+                default:
+                    sonidobotones();
+                    break;
+            }
+
         }
-        else if(event.getSource() == Btn_next)
+        else if(event.getSource() == Btn_upgrade & "16".equals(Lbl_info.getId()) & thunderstorm >= 3)
+        {
+            Boolean b = false;
+            if(b == false)
+            {
+                if(ragnarok == 0 & esmeraldas >= 300)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 250;
+                    ragnarok = 1;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(ragnarok == 1 & esmeraldas >= 600)
+                {
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 450;
+                    ragnarok = 2;
+                    b = true;
+                    acutalizarpantalla();
+                }
+                else if(ragnarok == 2 & esmeraldas >= 800)
+                {
+                    b = true;
+                    new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , getStage() , "Comprado con exito");
+                    esmeraldas -= 650;
+                    ragnarok = 3;
+                    acutalizarpantalla();
+
+                }
+            }
+
+            else
+            {
+                new Mensaje().showModal(Alert.AlertType.ERROR , "Compra " , getStage() , "No hay Dinero");
+            }
+        }
+        else if(event.getSource()
+                  == Btn_next)
         {
             FlowController.getInstance().goVista("Level020");
         }

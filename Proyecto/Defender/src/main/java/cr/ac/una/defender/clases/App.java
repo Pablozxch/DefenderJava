@@ -15,12 +15,10 @@ import javafx.scene.image.*;
  */
 public class App extends Application
 {
-
-    private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException
     {
+        stage.setFullScreen(true);
         FlowController.getInstance().InitializeFlow(stage , null);
         stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
         stage.setTitle("Defender");
