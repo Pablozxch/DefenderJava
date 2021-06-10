@@ -66,8 +66,8 @@ public class LoginController extends Controller implements Initializable
     {
         if(event.getSource() == Btn_register)
         {
-          //  FlowController.getInstance().goVista("Register");
-            FlowController.getInstance().goVista("Level020");
+            FlowController.getInstance().goVista("Register");
+            //FlowController.getInstance().goVista("Level020");
         }
         if(event.getSource() == Btn_login)
         {

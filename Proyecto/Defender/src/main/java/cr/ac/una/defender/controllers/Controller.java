@@ -27,7 +27,18 @@ public abstract class Controller
     private String accion;
     private static UserDto datos = new UserDto();
     public AudioClip musica;
+    Boolean completado=false;
 
+    public Boolean getCompletado()
+    {
+        return completado;
+    }
+
+    public void setCompletado(Boolean completado)
+    {
+        this.completado = completado;
+    }
+    
     public String getAccion()
     {
         return accion;

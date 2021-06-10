@@ -5,32 +5,67 @@
  */
 package cr.ac.una.defender.clases;
 
+import java.util.logging.*;
+import javafx.animation.*;
+import javafx.application.*;
 import javafx.scene.image.*;
+import javafx.util.*;
 
 /**
  *
  * @author jp015
  */
-public class Monstruo implements Accion
+public class Monstruo implements Acciones
 {
 
-    private int vida;
-    private String[] caminar;
-    private String[] morir;
-    private String[] atacar;
-    private int x;
-    private int y;
-    private ImageView imagen;
+    public int vida;
+    public int posx;
+    public int posy;
+    public String[] movimiento;
+    public String[] ataque;
+    public String[] dead;
+    int cont = 0;
+    int a = 81;
+    Boolean parar = false;
+
+    public int getCont()
+    {
+        return cont;
+    }
+
+    public void setCont(int cont)
+    {
+        this.cont = cont;
+    }
+
+    public int getA()
+    {
+        return a;
+    }
+
+    public void setA(int a)
+    {
+        this.a = a;
+    }
 
     public Monstruo()
     {
     }
 
-    public Monstruo(int vida , int x , int y)
+    public Monstruo(int vida)
     {
         this.vida = vida;
-        this.x = x;
-        this.y = y;
+
+    }
+
+    public int getPosy()
+    {
+        return posy;
+    }
+
+    public void setPosy(int posy)
+    {
+        this.posy = posy;
     }
 
     public int getVida()
@@ -43,95 +78,152 @@ public class Monstruo implements Accion
         this.vida = vida;
     }
 
-    public String[] getCaminar()
+    public int getPosx()
     {
-        return caminar;
+        return posx;
     }
 
-    public void setCaminar(String[] caminar)
+    public void setPosx(int posx)
     {
-        this.caminar = caminar;
+        this.posx = posx;
     }
 
-    public String[] getMorir()
+    public String[] getMovimiento()
     {
-        return morir;
+        return movimiento;
     }
 
-    public void setMorir(String[] morir)
+    public void setMovimiento(String[] movimiento)
     {
-        this.morir = morir;
+        this.movimiento = movimiento;
     }
 
-    public String[] getAtacar()
+    public String[] getAtaque()
     {
-        return atacar;
+        return ataque;
     }
 
-    public void setAtacar(String[] atacar)
+    public void setAtaque(String[] ataque)
     {
-        this.atacar = atacar;
+        this.ataque = ataque;
     }
 
-    public int getX()
+    public String[] getDead()
     {
-        return x;
+        return dead;
     }
 
-    public void setX(int x)
+    public void setDead(String[] dead)
     {
-        this.x = x;
-    }
-
-    public int getY()
-    {
-        return y;
-    }
-
-    public void setY(int y)
-    {
-        this.y = y;
-    }
-
-    public ImageView getImagen()
-    {
-        return imagen;
-    }
-
-    public void setImagen(ImageView imagen)
-    {
-        this.imagen = imagen;
+        this.dead = dead;
     }
 
     @Override
-    public void caminar()
+    public String toString()
     {
-        for(String caminar1 : caminar)
-        {
-            ImageView ss= new ImageView(new Image(caminar1));
-            ss.setX(500);
-            ss.setY(200);
-            ss.visibleProperty().set(true);
-            System.out.println("asd"+caminar1);
-        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Monstruo{vida=").append(vida);
+        sb.append(", posx=").append(posx);
+        sb.append(", posy=").append(posy);
+        sb.append(", movimiento=").append(movimiento);
+        sb.append(", ataque=").append(ataque);
+        sb.append(", dead=").append(dead);
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override
-    public void atacar()
+    public void caminar(ImageView imagenview , int possx)
     {
-        for(String atacar1 : atacar)
+
+        TranslateTransition translate = new TranslateTransition();
+        imagenview.setImage(new Image(movimiento[0]));
+        System.out.println("La posicion final es " + getPosx());
+        setPosx(possx - 950);
+        translate.setByX(getPosx());
+        translate.setDuration(Duration.seconds(10));
+        translate.setNode(imagenview);
+        animacion(imagenview , movimiento);
+        translate.play();
+        translate.setOnFinished((t) ->
         {
-            System.out.println(atacar1);
-        }
+            animacion(imagenview , dead);
+        });
+
     }
 
-    @Override
-    public void morir()
+    void animacion(ImageView imagenview , String[] nombre)
     {
-        for(String morir1 : morir)
+        cont = 0;
+        a = 81;
+
+        if(nombre == dead)
         {
-            System.out.println(morir1);
+            a = nombre.length;
+            //System.out.println("El valor es " + a);
+            parar = true;
+
         }
+        else
+        {
+            // System.out.println("El nombre es" + a);
+        }
+
+        Thread taskThread = new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                for(int i = 0; i < a; i++)
+                {
+                    try
+                    {
+                        Thread.sleep(125);
+                    }
+                    catch(InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(new Runnable()
+                    {
+                        @Override
+
+                        public void run()
+                        {
+                            System.out.println("Vamos por " + cont);
+                            System.out.println("El valor de la imagen es " + nombre[cont]);
+                            imagenview.setImage(new Image(nombre[cont]));
+                            cont++;
+                            if(parar == true)
+                            {   
+                                System.out.println("a huevo");
+                            }
+                            else
+                            {
+                                if(cont >= nombre.length)
+                                {
+                                    cont = 0;
+                                }
+                                else
+                                {
+                                    //System.out.println("Es menor");
+                                }
+                            }
+
+                        }
+
+                    });
+
+                }
+            }
+        });
+
+        taskThread.start();
+        cont = 0;
     }
 
+    void recibirdamage()
+    {
+
+    }
 }

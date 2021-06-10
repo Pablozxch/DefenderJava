@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../styles/Level020.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.Level020Controller">
    <children>
-      <ImageView fitHeight="1116.0" fitWidth="1946.0" layoutX="-17.0" layoutY="-33.0" pickOnBounds="true">
+      <ImageView fitHeight="1116.0" fitWidth="1946.0" layoutX="-7.0" layoutY="-31.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/Fondolvlprueba.jpg" />
          </image>
@@ -73,36 +74,36 @@
             <Font size="1.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="Btn_spell1" contentDisplay="GRAPHIC_ONLY" layoutX="1574.0" layoutY="440.0" prefHeight="86.0" prefWidth="105.0">
+      <JFXButton fx:id="Btn_spell1" contentDisplay="GRAPHIC_ONLY" layoutX="1574.0" layoutY="350.0" prefHeight="170.0" prefWidth="180.0">
          <font>
             <Font size="1.0" />
          </font>
          <graphic>
-            <ImageView fx:id="Imv_sp31" fitHeight="44.0" fitWidth="55.0" pickOnBounds="true">
+            <ImageView fx:id="Imv_sp1" fitHeight="120.0" fitWidth="130.0" pickOnBounds="true">
                <image>
                   <Image url="@../resources/fire.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Btn_spell2" contentDisplay="GRAPHIC_ONLY" layoutX="1570.0" layoutY="549.0" prefHeight="80.0" prefWidth="109.0">
+      <JFXButton fx:id="Btn_spell2" contentDisplay="GRAPHIC_ONLY" layoutX="1583.0" layoutY="556.0" prefHeight="170.0" prefWidth="180.0">
          <font>
             <Font size="1.0" />
          </font>
          <graphic>
-            <ImageView fx:id="Imv_sp2" fitHeight="58.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Imv_sp2" fitHeight="120.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/candado.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Btn_spell3" contentDisplay="GRAPHIC_ONLY" layoutX="1578.0" layoutY="659.0" prefHeight="73.0" prefWidth="90.0">
+      <JFXButton fx:id="Btn_spell3" contentDisplay="GRAPHIC_ONLY" layoutX="1594.0" layoutY="762.0" prefHeight="170.0" prefWidth="180.0">
          <font>
             <Font size="1.0" />
          </font>
          <graphic>
-            <ImageView fx:id="Imv_sp3" fitHeight="51.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Imv_sp3" fitHeight="120.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/candado.png" />
                </image>
@@ -130,10 +131,18 @@
           <RowConstraints maxHeight="474.6666564941406" minHeight="10.0" prefHeight="167.3333740234375" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <ImageView fitHeight="292.0" fitWidth="262.0" layoutX="27.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img_ballesta" fitHeight="222.0" fitWidth="246.0" layoutX="27.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/Cross.png" />
          </image>
       </ImageView>
+      <ProgressBar fx:id="pgr_vida" layoutX="153.0" layoutY="998.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" style="color: red;" />
+      <ImageView fitHeight="116.0" fitWidth="130.0" layoutX="8.0" layoutY="952.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/ParaLvl.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="pgr_mana" layoutX="156.0" layoutY="1031.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" />
+      <ProgressBar fx:id="pgr_lvl" layoutX="355.0" layoutY="101.0" prefHeight="18.0" prefWidth="421.0" progress="0.0" />
    </children>
 </AnchorPane>

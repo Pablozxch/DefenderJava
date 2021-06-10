@@ -22,7 +22,8 @@ public class App extends Application
         FlowController.getInstance().InitializeFlow(stage , null);
         stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
         stage.setTitle("Defender");
-        FlowController.getInstance().goVista("Login");
+        //FlowController.getInstance().goVista("Login");
+        FlowController.getInstance().goVista("Level020");
     }
 
     public static void main(String[] args)
