@@ -60,12 +60,6 @@ public abstract class Controller
         return stage;
     }
 
-    public void sendTabEvent(KeyEvent event)
-    {
-        event.consume();
-        KeyEvent keyEvent = new KeyEvent(KeyEvent.KEY_PRESSED , null , null , KeyCode.TAB , false , false , false , false);
-        ((Control) event.getSource()).fireEvent(keyEvent);
-    }
 
     public UserDto getDatos()
     {
@@ -101,6 +95,13 @@ public abstract class Controller
     public void comprado()
     {
         musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Cmonedas.wav").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(0.04);
+        musica.play();
+    }
+    public void disparar()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/flecha.mp3").toString());
         musica.setCycleCount(1);
         musica.setVolume(0.04);
         musica.play();

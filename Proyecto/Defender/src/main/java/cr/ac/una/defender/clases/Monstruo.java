@@ -156,7 +156,6 @@ public class Monstruo implements Acciones
     {
         cont = 0;
         a = 81;
-
         if(nombre == dead)
         {
             a = nombre.length;
@@ -174,7 +173,7 @@ public class Monstruo implements Acciones
             @Override
             public void run()
             {
-                for(int i = 0; i < a; i++)
+                for(int i = 0; i < a-1; i++)
                 {
                     try
                     {
@@ -190,24 +189,26 @@ public class Monstruo implements Acciones
 
                         public void run()
                         {
+
                             System.out.println("Vamos por " + cont);
                             System.out.println("El valor de la imagen es " + nombre[cont]);
                             imagenview.setImage(new Image(nombre[cont]));
                             cont++;
                             if(parar == true)
-                            {   
+                            {
                                 System.out.println("a huevo");
                             }
                             else
                             {
-                                if(cont >= nombre.length)
+                                if(cont < nombre.length)
                                 {
-                                    cont = 0;
+
                                 }
                                 else
                                 {
-                                    //System.out.println("Es menor");
+                                    cont = 0;
                                 }
+
                             }
 
                         }

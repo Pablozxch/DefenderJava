@@ -7,12 +7,10 @@ package cr.ac.una.defender.controllers;
 
 import com.jfoenix.controls.*;
 import cr.ac.una.defender.clases.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.*;
+
 import javafx.animation.*;
-import javafx.application.*;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.geometry.*;
@@ -63,6 +61,8 @@ public class Level020Controller extends Controller implements Initializable
     private ProgressBar pgr_mana;
     @FXML
     private ProgressBar pgr_lvl;
+    @FXML
+    private ImageView img_arrow;
 
     private Monstruo Caba = new Caballero(500);
     private Monstruo Caba2 = new Alien(500);
@@ -74,51 +74,54 @@ public class Level020Controller extends Controller implements Initializable
     ImageView m3 = new ImageView();
     ImageView m4 = new ImageView();
     ImageView m5 = new ImageView();
-    Point mouse = new Point();
+    int rotaa = 0;
+    Arrow arrow = new Arrow();
+    ImageView im = new ImageView();
 
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-        m1.setFitHeight(200);
-        m1.setFitWidth(180);
-        grid.getChildren().add(m1);
-        GridPane.setConstraints(m1 , 9 , 0);
-        GridPane.setHalignment(m1 , HPos.CENTER);
-        GridPane.setValignment(m1 , VPos.BOTTOM);
+//        m1.setFitHeight(200);
+//        m1.setFitWidth(180);
+//        grid.getChildren().add(m1);
+//        GridPane.setConstraints(m1 , 9 , 0);
+//        GridPane.setHalignment(m1 , HPos.CENTER);
+//        GridPane.setValignment(m1 , VPos.BOTTOM);
+//
+//        m2.setFitHeight(200);
+//        m2.setFitWidth(180);
+//        grid.getChildren().add(m2);
+//        GridPane.setConstraints(m2 , 9 , 1);
+//        GridPane.setHalignment(m2 , HPos.CENTER);
+//        GridPane.setValignment(m2 , VPos.BOTTOM);
+//
+//        m3.setFitHeight(200);
+//        m3.setFitWidth(180);
+//        grid.getChildren().add(m3);
+//        GridPane.setConstraints(m3 , 9 , 2);
+//        GridPane.setHalignment(m3 , HPos.CENTER);
+//        GridPane.setValignment(m3 , VPos.BOTTOM);
+//
+//        m4.setFitHeight(200);
+//        m4.setFitWidth(180);
+//        grid.getChildren().add(m4);
+//        GridPane.setConstraints(m4 , 9 , 3);
+//        GridPane.setHalignment(m4 , HPos.CENTER);
+//        GridPane.setValignment(m4 , VPos.BOTTOM);
+//
+//        m5.setFitHeight(150);
+//        m5.setFitWidth(120);
+//        grid.getChildren().add(m5);
+//        GridPane.setConstraints(m5 , 9 , 4);
+//        GridPane.setHalignment(m5 , HPos.CENTER);
+//        GridPane.setValignment(m5 , VPos.BOTTOM);
+//        Caba.caminar(m1 , 0);
+//        Caba2.caminar(m2 , 0);
+//        Caba3.caminar(m3 , 0);
+//        Caba4.caminar(m4 , 0);
+//        Caba5.caminar(m5 , 0);
+      //  algo();
 
-        m2.setFitHeight(200);
-        m2.setFitWidth(180);
-        grid.getChildren().add(m2);
-        GridPane.setConstraints(m2 , 9 , 1);
-        GridPane.setHalignment(m2 , HPos.CENTER);
-        GridPane.setValignment(m2 , VPos.BOTTOM);
-
-        m3.setFitHeight(200);
-        m3.setFitWidth(180);
-        grid.getChildren().add(m3);
-        GridPane.setConstraints(m3 , 9 , 2);
-        GridPane.setHalignment(m3 , HPos.CENTER);
-        GridPane.setValignment(m3 , VPos.BOTTOM);
-
-        m4.setFitHeight(200);
-        m4.setFitWidth(180);
-        grid.getChildren().add(m4);
-        GridPane.setConstraints(m4 , 9 , 3);
-        GridPane.setHalignment(m4 , HPos.CENTER);
-        GridPane.setValignment(m4 , VPos.BOTTOM);
-
-        m5.setFitHeight(150);
-        m5.setFitWidth(120);
-        grid.getChildren().add(m5);
-        GridPane.setConstraints(m5 , 9 , 4);
-        GridPane.setHalignment(m5 , HPos.CENTER);
-        GridPane.setValignment(m5 , VPos.BOTTOM);
-        Caba.caminar(m1 , 0);
-        Caba2.caminar(m2 , 0);
-        Caba3.caminar(m3 , 0);
-        Caba4.caminar(m4 , 0);
-        Caba5.caminar(m5 , 0);
-        algo();
     }
 
     public void algo()
@@ -136,36 +139,16 @@ public class Level020Controller extends Controller implements Initializable
     {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-//    public void xD(){
-//                tiempo.schedule(new TimerTask()
-//        {//Funcion de espera de unos segundo entre el lapso entre la caja puesta en la meta y el gane//
-//            @Override
-//            public void run()
-//            {
-//                
-//            }
-//        } , 1000);//Espera de 7 segundos
-//
-//        tiempo = new Timer();//hace el timer
-//        tiempo.schedule(new TimerTask()
-//        {//Funcion de espera de unos segundo entre el lapso entre la caja puesta en la meta y el gane//
-//            @Override
-//            public void run()
-//            {
-//                
-//            }
-//        } , 1000);//Espera de 7 segundos
-//
-//        tiempo = new Timer();//hace el timer
-//        tiempo.schedule(new TimerTask()
-//        {//Funcion de espera de unos segundo entre el lapso entre la caja puesta en la meta y el gane//
-//            @Override
-//            public void run()
-//            {
-//               
-//            }
-//        } , 1000);//Espera de 7 segundos
-//
-//    }
+
+    public void disparar() //este metodo se encarga de hacer toda la animacion de disparar
+    {
+        root.addEventFilter(MouseEvent.MOUSE_CLICKED , (t) ->
+        {
+            if(t.getButton().PRIMARY == MouseButton.PRIMARY)
+            {
+                disparar();
+            }
+        });
+    }
 
 }

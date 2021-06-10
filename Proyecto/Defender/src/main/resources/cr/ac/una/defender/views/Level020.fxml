@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../styles/Level020.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.Level020Controller">
    <children>
-      <ImageView fitHeight="1116.0" fitWidth="1946.0" layoutX="-7.0" layoutY="-31.0" pickOnBounds="true">
+      <ImageView fitHeight="1116.0" fitWidth="1946.0" layoutX="-7.0" layoutY="-22.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/Fondolvlprueba.jpg" />
          </image>
@@ -144,5 +144,10 @@
       </ImageView>
       <ProgressBar fx:id="pgr_mana" layoutX="156.0" layoutY="1031.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" />
       <ProgressBar fx:id="pgr_lvl" layoutX="355.0" layoutY="101.0" prefHeight="18.0" prefWidth="421.0" progress="0.0" />
+      <ImageView fx:id="img_arrow" fitHeight="150.0" fitWidth="200.0" layoutX="44.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true" rotate="141.8">
+         <image>
+            <Image url="@../resources/arrow.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
