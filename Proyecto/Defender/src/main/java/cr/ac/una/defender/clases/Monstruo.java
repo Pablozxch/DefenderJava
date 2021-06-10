@@ -5,10 +5,13 @@
  */
 package cr.ac.una.defender.clases;
 
+import cr.ac.una.defender.controllers.*;
 import java.util.logging.*;
 import javafx.animation.*;
 import javafx.application.*;
+import javafx.event.*;
 import javafx.scene.image.*;
+import javafx.scene.input.*;
 import javafx.util.*;
 
 /**
@@ -27,6 +30,9 @@ public class Monstruo implements Acciones
     int cont = 0;
     int a = 81;
     Boolean parar = false;
+    double cont2 = 1;
+    private int dinero;
+    int m;
 
     public int getCont()
     {
@@ -52,10 +58,21 @@ public class Monstruo implements Acciones
     {
     }
 
-    public Monstruo(int vida)
+    public Monstruo(int vida , int dinero)
     {
         this.vida = vida;
+        this.dinero = dinero;
 
+    }
+
+    public int getDinero()
+    {
+        return dinero;
+    }
+
+    public void setDinero(int dinero)
+    {
+        this.dinero = dinero;
     }
 
     public int getPosy()
@@ -138,15 +155,32 @@ public class Monstruo implements Acciones
 
         TranslateTransition translate = new TranslateTransition();
         imagenview.setImage(new Image(movimiento[0]));
-        System.out.println("La posicion final es " + getPosx());
         setPosx(possx - 950);
+        System.out.println("La posicion final es " + getPosx());
         translate.setByX(getPosx());
         translate.setDuration(Duration.seconds(10));
         translate.setNode(imagenview);
         animacion(imagenview , movimiento);
+        imagenview.addEventFilter(MouseEvent.MOUSE_CLICKED , (t) ->
+        {
+            if(t.getButton().PRIMARY == MouseButton.PRIMARY)
+            {
+                System.out.println("Le dio click al mob");
+                setVida(getVida() - 100);
+                System.out.println("La vida actual es " + getVida());
+                if(vida == 0)
+                {
+                    imagenview.setDisable(true);
+                    animacion(imagenview , dead);
+                    translate.stop();
+
+                }
+            }
+        });
         translate.play();
         translate.setOnFinished((t) ->
         {
+            setVida(0);
             animacion(imagenview , dead);
         });
 
@@ -173,7 +207,7 @@ public class Monstruo implements Acciones
             @Override
             public void run()
             {
-                for(int i = 0; i < a-1; i++)
+                for(int i = 0; i < a - 1; i++)
                 {
                     try
                     {
@@ -190,13 +224,13 @@ public class Monstruo implements Acciones
                         public void run()
                         {
 
-                            System.out.println("Vamos por " + cont);
-                            System.out.println("El valor de la imagen es " + nombre[cont]);
+                            //System.out.println("Vamos por " + cont);
+                            //System.out.println("El valor de la imagen es " + nombre[cont]);
                             imagenview.setImage(new Image(nombre[cont]));
                             cont++;
-                            if(parar == true)
+
+                            if(parar == true && cont == a - 1)
                             {
-                                System.out.println("a huevo");
                             }
                             else
                             {
@@ -221,6 +255,7 @@ public class Monstruo implements Acciones
 
         taskThread.start();
         cont = 0;
+        parar = false;
     }
 
     void recibirdamage()

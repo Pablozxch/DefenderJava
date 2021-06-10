@@ -25,9 +25,9 @@ public class Alien extends Monstruo
     {
     }
 
-    public Alien(int vida)
+    public Alien(int vida,int dinero)
     {
-        super(vida);
+        super(vida,dinero);
         super.setPosx(0);
         c = new String[12];
         c[0] = "/cr/ac/una/defender/resources/Personajes/AlienW01.png";

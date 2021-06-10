@@ -24,9 +24,9 @@ public class Zombie extends Monstruo
     {
     }
 
-    public Zombie(int vida)
+    public Zombie(int vida, int dinero)
     {
-        super(vida);
+        super(vida,dinero);
         super.setPosx(0);
         c = new String[6];
         c[0] = "/cr/ac/una/defender/resources/Personajes/Zombie1W01.png";

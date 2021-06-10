@@ -24,9 +24,9 @@ public class Robott extends Monstruo
     {
     }
 
-    public Robott(int vida)
+    public Robott(int vida, int dinero)
     {
-        super(vida);
+        super(vida,dinero);
         super.setPosx(0);
         c = new String[8];
         c[0] = "/cr/ac/una/defender/resources/Personajes/RobotW01.png";

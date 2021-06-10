@@ -27,8 +27,8 @@ public abstract class Controller
     private String accion;
     private static UserDto datos = new UserDto();
     public AudioClip musica;
-    Boolean completado=false;
-
+    Boolean completado = false;
+    private int money=0;
     public Boolean getCompletado()
     {
         return completado;
@@ -38,7 +38,7 @@ public abstract class Controller
     {
         this.completado = completado;
     }
-    
+
     public String getAccion()
     {
         return accion;
@@ -56,10 +56,9 @@ public abstract class Controller
 
     public Stage getStage()
     {
-       
+
         return stage;
     }
-
 
     public UserDto getDatos()
     {
@@ -92,6 +91,7 @@ public abstract class Controller
     {
         musica.stop();
     }
+
     public void comprado()
     {
         musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Cmonedas.wav").toString());
@@ -99,12 +99,33 @@ public abstract class Controller
         musica.setVolume(0.04);
         musica.play();
     }
+
     public void disparar()
     {
         musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/flecha.mp3").toString());
         musica.setCycleCount(1);
-        musica.setVolume(0.04);
+        musica.setVolume(0.07);
         musica.play();
     }
+
+    public void sonidodebatalla()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/campoBatalla.mp3").toString());
+        musica.setCycleCount(AudioClip.INDEFINITE);
+        musica.setVolume(0.09);
+        musica.play();
+    }
+
     public abstract void initialize();
+
+    public int getMoney()
+    {
+        return money;
+    }
+
+    public void setMoney(int money)
+    {
+        this.money = money;
+    }
+
 }

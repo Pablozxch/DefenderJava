@@ -15,7 +15,8 @@ import javafx.util.*;
  */
 public class Star extends Monstruo
 {
-        ImageView imagenview;
+
+    ImageView imagenview;
     String[] c;//caminar
     String[] a;//ataque
     String[] d;//dead
@@ -24,9 +25,9 @@ public class Star extends Monstruo
     {
     }
 
-    public Star(int vida)
+    public Star(int vida , int dinero)
     {
-        super(vida);
+        super(vida , dinero);
         super.setPosx(0);
         c = new String[6];
         c[0] = "/cr/ac/una/defender/resources/Personajes/StartW01.png";

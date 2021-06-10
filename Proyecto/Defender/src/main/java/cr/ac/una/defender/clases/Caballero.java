@@ -26,9 +26,9 @@ public class Caballero extends Monstruo
     {
     }
 
-    public Caballero(int vida)
+    public Caballero(int vida,int dinero)
     {
-        super(vida);
+        super(vida,dinero);
         super.setPosx(0);
         c = new String[10];
         c[0] = "/cr/ac/una/defender/resources/Personajes/CabaW01.png";
