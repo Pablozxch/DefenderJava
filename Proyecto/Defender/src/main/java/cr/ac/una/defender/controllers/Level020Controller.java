@@ -15,6 +15,7 @@ import javafx.animation.*;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.geometry.*;
+import javafx.scene.canvas.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
@@ -117,13 +118,13 @@ public class Level020Controller extends Controller implements Initializable
         GridPane.setConstraints(m5 , 9 , 4);
         GridPane.setHalignment(m5 , HPos.CENTER);
         GridPane.setValignment(m5 , VPos.BOTTOM);
-        Caba.caminar(m1 , 0);
-        Caba2.caminar(m2 , 0);
-        Caba3.caminar(m3 , 0);
-        Caba4.caminar(m4 , 0);
-        Caba5.caminar(m5 , 0);
+        Caba.caminar(m1 , -950);
+        Caba2.caminar(m2 , -950);
+        Caba3.caminar(m3 , -750);
+        Caba4.caminar(m4 , -950);
+        Caba5.caminar(m5 , -950);
         disparo();
-
+        //algo();
     }
 
     public void algo()
@@ -134,6 +135,10 @@ public class Level020Controller extends Controller implements Initializable
                   new KeyFrame(Duration.seconds(10) , new KeyValue(pgr_lvl.progressProperty() , 1))
         );
         timeline.play();
+        timeline.setOnFinished((t) ->
+        {
+            grid.getChildren().clear();
+        });
     }
 
     @Override

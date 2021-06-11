@@ -28,7 +28,7 @@ public abstract class Controller
     private static UserDto datos = new UserDto();
     public AudioClip musica;
     Boolean completado = false;
-    private int money=0;
+
     public Boolean getCompletado()
     {
         return completado;
@@ -117,15 +117,5 @@ public abstract class Controller
     }
 
     public abstract void initialize();
-
-    public int getMoney()
-    {
-        return money;
-    }
-
-    public void setMoney(int money)
-    {
-        this.money = money;
-    }
 
 }

@@ -136,26 +136,12 @@ public class Monstruo implements Acciones
     }
 
     @Override
-    public String toString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Monstruo{vida=").append(vida);
-        sb.append(", posx=").append(posx);
-        sb.append(", posy=").append(posy);
-        sb.append(", movimiento=").append(movimiento);
-        sb.append(", ataque=").append(ataque);
-        sb.append(", dead=").append(dead);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public void caminar(ImageView imagenview , int possx)
     {
 
         TranslateTransition translate = new TranslateTransition();
         imagenview.setImage(new Image(movimiento[0]));
-        setPosx(possx - 950);
+        setPosx(possx);
         System.out.println("La posicion final es " + getPosx());
         translate.setByX(getPosx());
         translate.setDuration(Duration.seconds(10));
@@ -181,7 +167,7 @@ public class Monstruo implements Acciones
         translate.setOnFinished((t) ->
         {
             setVida(0);
-            animacion(imagenview , dead);
+            animacion(imagenview , ataque);
         });
 
     }
@@ -228,9 +214,9 @@ public class Monstruo implements Acciones
                             //System.out.println("El valor de la imagen es " + nombre[cont]);
                             imagenview.setImage(new Image(nombre[cont]));
                             cont++;
-
                             if(parar == true && cont == a - 1)
                             {
+
                             }
                             else
                             {
@@ -261,5 +247,19 @@ public class Monstruo implements Acciones
     void recibirdamage()
     {
 
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Monstruo{vida=").append(vida);
+        sb.append(", posx=").append(posx);
+        sb.append(", posy=").append(posy);
+        sb.append(", movimiento=").append(movimiento);
+        sb.append(", ataque=").append(ataque);
+        sb.append(", dead=").append(dead);
+        sb.append('}');
+        return sb.toString();
     }
 }
