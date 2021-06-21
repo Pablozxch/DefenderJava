@@ -1,6 +1,0 @@
-* Caballero
-* Esqueleto
-* Robot
-* Zombie 1
-* Zombie 2
-Falta el zombie 3 y mas cosas
