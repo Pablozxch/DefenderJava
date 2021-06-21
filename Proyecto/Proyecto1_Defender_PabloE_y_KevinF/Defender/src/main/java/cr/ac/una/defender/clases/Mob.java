@@ -61,7 +61,7 @@ public class Mob implements Accion
         return vida;
     }
 
-    public void setVida(int vida)
+    public void setVida(int vida)//Cuando se setea la vida de recibir damage este para el translate y ejecuta el spripte morir
     {
         this.vida = vida;
         if(muerto == true)
@@ -194,7 +194,7 @@ public class Mob implements Accion
     public Thread taskThread;
     public int i = 0;
 
-    public void sprite(String[] nombre)
+    public void sprite(String[] nombre)//rcibe como valor el nombre del spirte a realizar mas su respectivo array de imagenes
     {
         cont = 0;
         a = 81;
@@ -223,7 +223,7 @@ public class Mob implements Accion
 
         }
 
-        taskThread = new Thread(new Runnable()
+        taskThread = new Thread(new Runnable()//este tread se encarga de hacer la animacion
         {
             @Override
             public void run()
@@ -286,7 +286,7 @@ public class Mob implements Accion
     public Duration segacutal;
 
     @Override
-    public void Start()
+    public void Start()//se encarga de dar inicio a todo, empezado en una posicion x del grid hasta terminar en  otra, haciendo un traslate
     {
         if(!muerto)
         {
@@ -307,18 +307,10 @@ public class Mob implements Accion
 
     }
 
-    public void playSound()
-    {
 
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/zombieauch.mp3").toString());
-        musica.setCycleCount(AudioClip.INDEFINITE);
-        musica.setVolume(0.05);
-        musica.play();
-
-    }
 
     @Override
-    public void dect(Circle bullet , int damage)
+    public void dect(Circle bullet , int damage)//se encarga de detectar la colicion de las balas 
     {
         if(imagenView.getBoundsInParent().intersects(bullet.getBoundsInParent()))
         {
@@ -332,7 +324,7 @@ public class Mob implements Accion
     }
 
     @Override
-    public void detectF(Circle bullet , int time)
+    public void detectF(Circle bullet , int time)//se encarga de detectar la colicion con los spells
     {
         if(imagenView.getBoundsInParent().intersects(bullet.getBoundsInParent()))
         {
@@ -399,21 +391,9 @@ public class Mob implements Accion
         this.contataques = contataques;
     }
 
-    public void congelar(int time)
-    {
-        try
-        {
-            translate.wait(time);
-            taskThread.wait(time);
-        }
-        catch(InterruptedException ex)
-        {
-            Logger.getLogger(Mob.class.getName()).log(Level.SEVERE , null , ex);
-        }
-    }
 
     @Override
-    public void pausar()
+    public void pausar()//se encarga de hacer la pausa
     {
         System.out.println("Me paré");
         if(!muerto)
@@ -425,7 +405,7 @@ public class Mob implements Accion
     }
 
     @Override
-    public void iniciar()
+    public void iniciar()//se encarga de reanudar la pausa
     {
         System.out.println("Seguí");
         if(!muerto)

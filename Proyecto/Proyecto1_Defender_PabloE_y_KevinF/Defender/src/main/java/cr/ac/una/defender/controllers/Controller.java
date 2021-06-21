@@ -142,7 +142,15 @@ public abstract class Controller
         musica.setVolume(1);
         musica.play();
     }
+    public void playZ()
+    {
 
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/zombieauch.mp3").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
+        musica.play();
+
+    }
     public void playFreeze()
     {
         musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/freeze.mp3").toString());

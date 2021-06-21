@@ -240,6 +240,10 @@
                <font>
                   <Font size="28.0" />
                </font></JFXButton>
+            <JFXButton fx:id="bntT1" contentDisplay="CENTER" layoutX="1644.0" layoutY="335.0" onAction="#swapGun" prefHeight="52.0" prefWidth="64.0" text="Tipo 1" />
+            <ImageView fx:id="imvPistolaEscoger" fitHeight="143.0" fitWidth="196.0" layoutX="1656.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="bntT2" contentDisplay="CENTER" layoutX="1721.0" layoutY="335.0" onAction="#swapGun" prefHeight="52.0" prefWidth="64.0" text="Tipo 2" />
+            <JFXButton fx:id="bntT3" contentDisplay="CENTER" layoutX="1801.0" layoutY="335.0" onAction="#swapGun" prefHeight="52.0" prefWidth="64.0" text="Tipo 3" />
          </children>
       </AnchorPane>
       <Label fx:id="Lbl_info" alignment="TOP_LEFT" layoutY="348.0" prefHeight="103.0" prefWidth="1437.0" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="483.0">
@@ -268,5 +272,7 @@
             <Image url="@../resources/Logo.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="img_user" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton fx:id="btnS" layoutX="223.0" layoutY="41.0" onAction="#swapIm" prefHeight="66.0" prefWidth="112.0" text="Siguiente Skin" />
    </children>
 </AnchorPane>

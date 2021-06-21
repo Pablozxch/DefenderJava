@@ -106,20 +106,79 @@ public class PreGameController extends Controller implements Initializable
     int armagedon = 0;
     int aceage = 0;
     int ragnarok = 0;
+    int imgBallesta = 0;
+    int imgUser = 0;
     @FXML
     private Label Lbl_stage;
+    @FXML
+    private ImageView imvPistolaEscoger;
+    @FXML
+    private JFXButton bntT1;
+    @FXML
+    private JFXButton bntT2;
+    @FXML
+    private JFXButton bntT3;
+    @FXML
+    private ImageView img_user;
+    @FXML
+    private JFXButton btnS;
 
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-        System.out.println("vez");
-        llenartodo();
-        setinfo();
+        llenartodo();//este metodo se encarga de llenar todo lo del usuariuo
+        setinfo();//este metodo se encarga de setear la info en pantalla
 
     }
 
-    public void llenartodo()
+    public void llenartodo()//llenado de variables del jugador
     {
+
+        imgBallesta = getDatos().getImgBallesta().intValue();
+        if(imgBallesta == 0)
+        {
+            imgBallesta = 1;
+        }
+        switch(imgBallesta)
+        {
+            case 1:
+                imvPistolaEscoger.setImage(new Image("/cr/ac/una/defender/resources/Gun1.png"));
+                break;
+            case 2:
+                imvPistolaEscoger.setImage(new Image("/cr/ac/una/defender/resources/Gun2.png"));
+                break;
+            case 3:
+                imvPistolaEscoger.setImage(new Image("/cr/ac/una/defender/resources/Gun3.png"));
+                break;
+            default:
+                break;
+        }
+        imgUser = getDatos().getImgUser().intValue();
+        if(imgUser == 0)
+        {
+            imgUser = 1;
+        }
+        switch(imgUser)
+        {
+            case 1:
+                img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU1.png"));
+                break;
+            case 2:
+                img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU2.png"));
+                break;
+            case 3:
+                img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU3.png"));
+                break;
+            case 4:
+                img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU4.png"));
+                break;
+            case 5:
+                img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU5.png"));
+                break;
+            default:
+                break;
+        }
+
         dinero = getDatos().getDinero().intValue();
         esmeraldas = getDatos().getEsmeralda().intValue();
         fuerza = getDatos().getLvlFuerza().intValue();
@@ -137,7 +196,7 @@ public class PreGameController extends Controller implements Initializable
         llenarspells();
     }
 
-    public void llenarspells()
+    public void llenarspells()//llenado de spells
     {
 
         switch(fireball)
@@ -250,14 +309,14 @@ public class PreGameController extends Controller implements Initializable
         }
     }
 
-    public void setinfo()
+    public void setinfo()//seteo de la info en pantalla
     {
         Lbl_money.setText(String.valueOf(dinero));
         Lbl_diamantes.setText(String.valueOf(esmeraldas));
         Lbl_stage.setText("Stage :" + String.valueOf(lvl));
     }
 
-    public void acutalizarpantalla()
+    public void acutalizarpantalla()//se encarga de acutalizar la info en la pantalla luego de comprar mas sonido
     {
 
         Lbl_money.setText(String.valueOf(dinero));
@@ -269,22 +328,25 @@ public class PreGameController extends Controller implements Initializable
 
     }
 
-    public void mostrarinfo()
+    public void mostrarinfo()//muestar la primer info
     {
         Lbl_info.setText("En esta parte se van a mostrar todo el tipo de informacion sobre las mejoras "
                   + "que\n puedes realizar  en el juego");
     }
 
-    public void aumentarspells()
+    public void aumentarspells()//se encarga de guardar el lvl del fireball para la base de datos
     {
         fireball = fireball + meteor + armagedon;
         freeze = freeze + aceage + frostage;
         lightning = lightning + thunderstorm + ragnarok;
     }
 
-    public void actuDB()
+    public void actuDB()// se encarga de acutalizar todas las variables para guardar la base de datos
     {
         aumentarspells();
+        System.out.println("El valro es "+imgBallesta);
+        getDatos().setImgUser(String.valueOf(imgUser));
+        getDatos().setImgBallesta(String.valueOf(imgBallesta));
         getDatos().setDinero(String.valueOf(dinero));
         getDatos().setEsmeralda(String.valueOf(esmeraldas));
         getDatos().setLvlFuerza(String.valueOf(fuerza));
@@ -304,7 +366,7 @@ public class PreGameController extends Controller implements Initializable
     }
 
     @FXML
-    private void click(ActionEvent event)
+    private void click(ActionEvent event)//se encarga de detectar los clicks para comprar
     {
 
         if(event.getSource() == Btn_defender)
@@ -1497,5 +1559,62 @@ public class PreGameController extends Controller implements Initializable
         llenartodo();
         setinfo();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void swapGun(ActionEvent event)// se encarga de cambiar las armas
+    {
+        if(event.getSource() == bntT1)
+        {
+            imvPistolaEscoger.setImage(new Image("/cr/ac/una/defender/resources/Gun1.png"));
+            imgBallesta = 1;
+        }
+        else if(event.getSource() == bntT2)
+        {
+            imvPistolaEscoger.setImage(new Image("/cr/ac/una/defender/resources/Gun2.png"));
+            imgBallesta = 2;
+ 
+        }
+        else if(event.getSource() == bntT3)
+        {
+            imvPistolaEscoger.setImage(new Image("/cr/ac/una/defender/resources/Gun3.png"));
+            imgBallesta = 3;
+        }
+
+    }
+
+    @FXML
+    private void swapIm(ActionEvent event)//se encarga de acambiar la imagen de usuario
+    {
+        if(event.getSource() == btnS)
+        {
+            imgUser++;
+            if(imgUser <= 5)
+            {
+                switch(imgUser)
+                {
+                    case 1:
+                        img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU1.png"));
+                        break;
+                    case 2:
+                        img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU2.png"));
+                        break;
+                    case 3:
+                        img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU3.png"));
+                        break;
+                    case 4:
+                        img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU4.png"));
+                        break;
+                    case 5:
+                        img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU5.png"));
+                }
+            }
+            else
+            {
+                imgUser = 1;
+                img_user.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU1.png"));
+            }
+
+        }
     }
 }

@@ -90,18 +90,21 @@ public class LevelsController extends Controller implements Initializable
     public int damageBS2;
     public int damageBS3;
     private Thread taskThread3;
+    @FXML
+    private ImageView imvUserL;
 
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
         fondo();
 
-        sonidodebatalla();
-        llenarVariablesJugador();
-        crearmostruos();
-        contarDaamge();
+        sonidodebatalla();// se encarga de añadir sonido de campo de batalla
+        llenarVariablesJugador();//se encarga de llenar las variavles del jugador 
+        crearmostruos();//crea mostruos
+        contarDaamge();//cuenta el daño de los monstruos
         grid.addEventFilter(MouseEvent.MOUSE_PRESSED , (MouseEvent mouse) ->
         {
+            //este metodo se encarga de disparar desde la "ballesta" hacia los mobs
             TranslateTransition translate = new TranslateTransition();
             circle = new Circle();
             Image im = new Image("/cr/ac/una/defender/resources/bullet.png");
@@ -126,14 +129,14 @@ public class LevelsController extends Controller implements Initializable
             });
         });
 
-        speelFireball();
-        spellRayo();
-        spellFreeze();
-        llenarcosademana();
+        speelFireball();//Drag an drop de los spells
+        spellRayo();//Drag an drop de los spells
+        spellFreeze();//Drag an drop de los spells
+        llenarcosademana();//llenar el mana continuamente
     }
     public int vidamob = 25;
 
-    void fondo()
+    void fondo()//setear el fondo, cambiar el arma, cambiar el usuario
     {
         if(oleadaM <= 2)
         {
@@ -157,6 +160,43 @@ public class LevelsController extends Controller implements Initializable
         }
         Imv_sp2.setImage(new Image("/cr/ac/una/defender/resources/rayo.png"));
         Imv_sp3.setImage(new Image("/cr/ac/una/defender/resources/freeze.png"));
+
+        if(getDatos().getImgBallesta() == 1)
+        {
+
+            img_ballesta.setImage(new Image("/cr/ac/una/defender/resources/Gun1.png"));
+        }
+        else if(getDatos().getImgBallesta() == 2)
+        {
+            img_ballesta.setImage(new Image("/cr/ac/una/defender/resources/Gun2.png"));
+
+        }
+        else if(getDatos().getImgBallesta() == 3)
+        {
+            img_ballesta.setImage(new Image("/cr/ac/una/defender/resources/Gun3.png"));
+
+        }
+        switch(getDatos().getImgUser().intValue())
+        {
+            case 1:
+                imvUserL.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU1.png"));
+                break;
+            case 2:
+                imvUserL.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU2.png"));
+                break;
+            case 3:
+                imvUserL.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU3.png"));
+                break;
+            case 4:
+                imvUserL.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU4.png"));
+                break;
+            case 5:
+                imvUserL.setImage(new Image("/cr/ac/una/defender/resources/usersi/imgU5.png"));
+                break;
+            default:
+                break;
+
+        }
 
     }
 
@@ -317,7 +357,7 @@ public class LevelsController extends Controller implements Initializable
         contarmuetos();
     }
 
-    void contarmuetos()
+    void contarmuetos()//cuanta la cantidad de muertos para poer pasar de ronda 
     {
         sizeM = monstruo.size();
         int cMuertes = 0;
@@ -357,7 +397,7 @@ public class LevelsController extends Controller implements Initializable
         }
     }
 
-    public void speelFireball()//cosas del spells fireball
+    public void speelFireball()//drag and drop del spell de fireball
     {
         Imv_sp1.setOnDragDetected((MouseEvent event) ->
         {
@@ -419,7 +459,7 @@ public class LevelsController extends Controller implements Initializable
         });
     }
 
-    public void spellFreeze()
+    public void spellFreeze()//drag and drop del spell de freeze
     {
         Imv_sp3.setOnDragDetected((MouseEvent event) ->
         {
@@ -483,7 +523,7 @@ public class LevelsController extends Controller implements Initializable
         });
     }
 
-    public void spellRayo()
+    public void spellRayo()//drag and drop del spell de rayo
     {
         Imv_sp2.setOnDragDetected((MouseEvent event) ->
         {
@@ -578,7 +618,9 @@ public class LevelsController extends Controller implements Initializable
                                 monstruo1.setContataques(0);
                                 if(contdamage != 0)
                                 {
-                                    System.out.println("Buenas");
+
+                                    playZ();
+
                                     setvpro(0.01);
 
                                 }
@@ -594,36 +636,6 @@ public class LevelsController extends Controller implements Initializable
         });
 
         taskThread.start();
-
-    }
-
-    public void dragDropTodo()
-    {
-        //System.out.println("Buenos Dias");
-        Btn_spell1.setOnDragDetected((MouseEvent event) ->
-        {
-            Dragboard db = Btn_spell1.startDragAndDrop(TransferMode.COPY_OR_MOVE);
-            Btn_spell1.snapshot(null , null);
-            db.setDragView(Imv_sp1.getImage() , 0 , 0);
-            ClipboardContent contenido = new ClipboardContent(); // LO QUE VA ADENTRO
-            contenido.putImage(Imv_sp1.getImage());
-            db.setContent(contenido);
-            // System.out.println("HICE DRAG");
-            event.consume();
-        });
-        Btn_spell1.setOnDragDropped((t) ->
-        {
-            Dragboard db = t.getDragboard();
-            boolean éxito = false;
-            if(db.hasImage())
-            {
-                //Img_Local.setImage(db.getImage());
-                éxito = true;
-            }
-            t.setDropCompleted(éxito);
-            t.consume();
-
-        });
 
     }
 
@@ -777,7 +789,7 @@ public class LevelsController extends Controller implements Initializable
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void llenarcosademana()
+    public void llenarcosademana()//se encarga de llenar la barra de mana permanentemente 
     {
         taskThread3 = new Thread(new Runnable()
         {
@@ -816,7 +828,7 @@ public class LevelsController extends Controller implements Initializable
     public Boolean parar = false;
 
     @FXML
-    private void click(ActionEvent event)
+    private void click(ActionEvent event)//detecta los clicks para pausar el juego
     {
         if(event.getSource() == Btn_pause && parar == false)
         {

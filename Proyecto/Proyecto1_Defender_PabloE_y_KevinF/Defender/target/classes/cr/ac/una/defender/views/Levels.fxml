@@ -94,7 +94,7 @@
          </image>
       </ImageView>
       <ProgressBar fx:id="pgr_vida" layoutX="153.0" layoutY="998.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" style="color: red;" />
-      <ImageView fitHeight="116.0" fitWidth="130.0" layoutX="8.0" layoutY="952.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imvUserL" fitHeight="116.0" fitWidth="130.0" layoutX="8.0" layoutY="952.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/ParaLvl.png" />
          </image>

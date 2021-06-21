@@ -40,7 +40,7 @@ public class PuntuacionController implements Initializable
         llenartodo();
     }
 
-    public void llenartodo()
+    public void llenartodo()// se encarga de crear una tabla donde se muestran todos los jugadores de la base de datos 
     {
         try
         {
