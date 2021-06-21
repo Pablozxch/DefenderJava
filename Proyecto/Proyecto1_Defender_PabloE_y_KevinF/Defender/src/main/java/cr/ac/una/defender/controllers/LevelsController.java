@@ -97,7 +97,20 @@ public class LevelsController extends Controller implements Initializable
     public void initialize(URL url , ResourceBundle rb)
     {
         fondo();
+        int esmeraldas = getDatos().getEsmeralda().intValue();
+        if(getDatos().getLvl().intValue() == 2)
+        {
 
+            getDatos().setEsmeralda(String.valueOf(esmeraldas + 1000));
+        }
+        else if(getDatos().getLvl().intValue() == 4)
+        {
+            getDatos().setEsmeralda(String.valueOf(esmeraldas + 1000));
+        }
+        else if(getDatos().getLvl().intValue() == 6)
+        {
+            getDatos().setEsmeralda(String.valueOf(esmeraldas + 1000));
+        }
         sonidodebatalla();// se encarga de añadir sonido de campo de batalla
         llenarVariablesJugador();//se encarga de llenar las variavles del jugador 
         crearmostruos();//crea mostruos
@@ -144,19 +157,19 @@ public class LevelsController extends Controller implements Initializable
         }
         else if(oleadaM > 2 && oleadaM <= 4)
         {
-            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/Eastseadragonpalacelawn.png"));
+            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/Eastseadragonpalacelawn.jpg"));
         }
         else if(oleadaM > 4 && oleadaM <= 6)
         {
-            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/Dark_Ages_Lawn.png"));
+            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/Dark_Ages_Lawn.jpg"));
         }
         else if(oleadaM > 6 && oleadaM <= 8)
         {
-            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/FrostbiteCaveslawn.png"));
+            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/FrostbiteCaveslawn.jpg"));
         }
         else
         {
-            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/Neon_Mixtape_Tour_Lawn.png"));
+            imv_fondo.setImage(new Image("/cr/ac/una/defender/resources/Neon_Mixtape_Tour_Lawn.jpg"));
         }
         Imv_sp2.setImage(new Image("/cr/ac/una/defender/resources/rayo.png"));
         Imv_sp3.setImage(new Image("/cr/ac/una/defender/resources/freeze.png"));
@@ -386,11 +399,12 @@ public class LevelsController extends Controller implements Initializable
             if(oleadas >= oleadaM)
             {
                 taskThread.stop();
+                musica.stop();
                 String lvl = String.valueOf(getDatos().getLvl().intValue() + 1);
                 getDatos().setLvl(lvl);
                 getDatos().setDinero(Lbl_money.getText());
                 System.out.println("Complete el nivel");
-                musica.stop();
+                
                 FlowController.getInstance().goVista("PreGame");
             }
             crearmostruos();
@@ -619,8 +633,10 @@ public class LevelsController extends Controller implements Initializable
                                 if(contdamage != 0)
                                 {
 
-                                    playZ();
-
+                                    playZ();//reproduce sonido de zombie
+                                    plaA();//reproduce sonido de alien
+                                    playR();//reproduce sonido de robot
+                                    playC();//reproduce sonido de caballero
                                     setvpro(0.01);
 
                                 }

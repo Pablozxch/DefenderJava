@@ -15,6 +15,16 @@
     -fx-border-radius: 15px;
     -fx-effect: dropshadow(gaussian,transparent,10.0, 0.9, 0.0,3.5);
 }
+#btnTabla
+{
+     -fx-background-color: transparent;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(gaussian,transparent,10.0, 0.9, 0.0,3.5);
+}
+#btnTabla:hover  
+{
+     -fx-background-color: transparent;
+}
 #Btn_play:hover  
 {
     -fx-background-color: transparent;

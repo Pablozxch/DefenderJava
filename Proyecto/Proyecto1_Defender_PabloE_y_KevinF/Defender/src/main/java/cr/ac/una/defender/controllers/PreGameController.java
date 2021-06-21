@@ -1542,13 +1542,14 @@ public class PreGameController extends Controller implements Initializable
         {
             actuDB();
             Respuesta respuesta = service.guardarUser(getDatos());
-            if(lvl < 100)
+            if(lvl <= 10)
             {
                 FlowController.getInstance().goVista("Levels");
             }
             else
             {
-                FlowController.getInstance().goVista("Ganador");
+                new Mensaje().showModal(Alert.AlertType.INFORMATION , "Completaste el juego" ,  Btn_mana.getScene().getWindow() , "Felicidades ganaste todos los niveles");
+                FlowController.getInstance().goVista("Menu");
             }
         }
     }

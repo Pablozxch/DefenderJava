@@ -113,7 +113,7 @@ public abstract class Controller
     {
         musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/campoBatalla.mp3").toString());
         musica.setCycleCount(AudioClip.INDEFINITE);
-        musica.setVolume(0.09);
+        musica.setVolume(0.03);
         musica.play();
     }
 
@@ -142,6 +142,15 @@ public abstract class Controller
         musica.setVolume(1);
         musica.play();
     }
+
+    public void playFreeze()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/freeze.mp3").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(1);
+        musica.play();
+    }
+
     public void playZ()
     {
 
@@ -151,11 +160,28 @@ public abstract class Controller
         musica.play();
 
     }
-    public void playFreeze()
+
+    public void playC()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/freeze.mp3").toString());
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Caba.mp3").toString());
         musica.setCycleCount(1);
-        musica.setVolume(1);
+        musica.setVolume(0.07);
+        musica.play();
+    }
+
+    public void plaA()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Alien.mp3").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
+        musica.play();
+    }
+
+    public void playR()
+    {
+        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Robot.mp3").toString());
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
         musica.play();
     }
 
