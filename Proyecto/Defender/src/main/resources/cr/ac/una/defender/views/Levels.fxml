@@ -62,10 +62,17 @@
             </Label>
          </children>
       </HBox>
-      <JFXButton fx:id="Btn_pause" contentDisplay="TEXT_ONLY" layoutX="14.0" layoutY="14.0" onAction="#click" prefHeight="57.0" prefWidth="162.0" style="-fx-background-color: lightblue;" text="PAUSA" textFill="WHITE">
+      <JFXButton fx:id="Btn_pause" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="14.0" onAction="#click" prefHeight="81.0" prefWidth="116.0" text="PAUSA" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font>
+         <graphic>
+            <ImageView fx:id="imgPausa" fitHeight="101.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <GridPane fx:id="grid" layoutX="322.0" layoutY="173.0" prefHeight="802.0" prefWidth="1038.0">
         <columnConstraints>
@@ -88,11 +95,7 @@
           <RowConstraints maxHeight="474.6666564941406" minHeight="10.0" prefHeight="167.3333740234375" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <ImageView fx:id="img_ballesta" fitHeight="178.0" fitWidth="267.0" layoutX="68.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" rotate="24.8">
-         <image>
-            <Image url="@../resources/Cross.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="img_ballesta" fitHeight="178.0" fitWidth="267.0" layoutX="68.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" rotate="24.8" />
       <ProgressBar fx:id="pgr_vida" layoutX="153.0" layoutY="998.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" style="color: red;" />
       <ImageView fx:id="imvUserL" fitHeight="116.0" fitWidth="130.0" layoutX="8.0" layoutY="952.0" pickOnBounds="true" preserveRatio="true">
          <image>

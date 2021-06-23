@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="313.0" prefWidth="335.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="cr.ac.una.defender.controllers.PausaController">
+   <children>
+      <ImageView fitHeight="314.0" fitWidth="337.0" layoutY="-1.0">
+         <image>
+            <Image url="@../resources/Pausa.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnSeguir" contentDisplay="GRAPHIC_ONLY" layoutX="60.0" layoutY="52.0" onAction="#btnAccionSeguir" prefHeight="65.0" prefWidth="78.0" style="-fx-background-color: transparent; -fx-background-radius: 100;" />
+      <JFXButton fx:id="btn_Ajustes" contentDisplay="GRAPHIC_ONLY" layoutX="60.0" layoutY="161.0" onAction="#btnAccionConfig" prefHeight="65.0" prefWidth="78.0" style="-fx-background-color: transparent; -fx-background-radius: 100;" />
+      <JFXButton fx:id="Btn_Reinicar" contentDisplay="GRAPHIC_ONLY" layoutX="199.0" layoutY="50.0" onAction="#btnReiniciar" prefHeight="69.0" prefWidth="78.0" style="-fx-background-color: transparent; -fx-background-radius: 100;" />
+      <JFXButton fx:id="btn_PreGame" contentDisplay="GRAPHIC_ONLY" layoutX="198.0" layoutY="160.0" onAction="#btnAccionRegresarMenu" prefHeight="65.0" prefWidth="78.0" style="-fx-background-color: transparent; -fx-background-radius: 100;" />
+      <JFXButton fx:id="BtnSeguir" contentDisplay="GRAPHIC_ONLY" layoutX="284.0" layoutY="2.0" onAction="#btnAccionSeguir" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 100;" />
+   </children>
+</AnchorPane>

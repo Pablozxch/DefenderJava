@@ -9,6 +9,7 @@ import com.jfoenix.controls.*;
 import cr.ac.una.defender.clases.*;
 import cr.ac.una.defender.utils.*;
 import java.awt.*;
+import java.io.*;
 
 import java.net.URL;
 import java.util.*;
@@ -19,6 +20,7 @@ import javafx.event.*;
 
 import javafx.fxml.*;
 import javafx.geometry.*;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.effect.*;
@@ -30,6 +32,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.stage.*;
 import javafx.util.*;
 
 /**
@@ -96,6 +99,8 @@ public class LevelsController extends Controller implements Initializable
     private int radios1;//se encarga del radio de los spells
     private int radios2;
     private int radios3;
+    @FXML
+    private ImageView imgPausa;
 
     @Override
     public void initialize(URL url , ResourceBundle rb)
@@ -675,7 +680,7 @@ public class LevelsController extends Controller implements Initializable
         damageBS1 = getDatos().getLvlFireBall().intValue();
         damageBS2 = getDatos().getLvlRayo().intValue();
         damageBS3 = getDatos().getLvlFreeze().intValue();
-
+        
         switch(damageB)
         {
             case 0:
@@ -829,13 +834,7 @@ public class LevelsController extends Controller implements Initializable
                 break;
 
         }
-        
-        
-        
-        
-        
-        
-        
+
         System.out.println("El valor del radio del spells 1 es " + radios1);
         System.out.println("El valor del radio del spells 2 es " + radios2);
         System.out.println("El valor del radio del spells 3 es " + radios3);
@@ -889,29 +888,58 @@ public class LevelsController extends Controller implements Initializable
     }
     public Boolean parar = false;
 
-    @FXML
-    private void click(ActionEvent event)//detecta los clicks para pausar el juego
+    public void llamarPausa() throws IOException
     {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/Pausa.fxml"));
+//        Parent root = fxmlLoader.load();
+//        Stage stage = new Stage();
+//        stage.setOpacity(1);
+//        Scene scene = new Scene(root , 335 , 313);
+//        stage.setScene(scene);
+//        stage.resizableProperty().set(false);
+//        stage.initModality(Modality.WINDOW_MODAL);
+//        stage.initOwner(Btn_pause.getScene().getWindow());
+//        stage.centerOnScreen();
+//        stage.showAndWait();
+    }
+
+    @FXML
+    private void click(ActionEvent event) throws IOException//detecta los clicks para pausar el juego
+    {
+
         if(event.getSource() == Btn_pause && parar == false)
         {
-            System.out.println("Le di parar");
-            new Mensaje().showModal(Alert.AlertType.CONFIRMATION , "Pausar" , Btn_pause.getScene().getWindow() , "El juego se ha pausado");
+            paramusica();
+            grid.disableProperty().set(true);
+            Imv_sp1.disableProperty().set(true);
+            Imv_sp2.disableProperty().set(true);
+            Imv_sp3.disableProperty().set(true);
+            parar = true;
+            imgPausa.setImage(new Image("/cr/ac/una/defender/resources/resume.png"));
+            imgPausa.setEffect(new Glow(1));
             for(Mob monstruo1 : monstruo)
             {
-                monstruo1.pausar();
+                monstruo1.pausar();//colocar el otro metodo de pausar 
             }
-            parar = true;
+            llamarPausa();
 
         }
         else if(event.getSource() == Btn_pause && parar == true)
         {
-            System.out.println("Le di seguir");
-            new Mensaje().showModal(Alert.AlertType.CONFIRMATION , "Reanudar" , Btn_pause.getScene().getWindow() , "El juego se ha rehanudado");
+            sonidodebatalla();
+            grid.disableProperty().set(false);
+            Imv_sp1.disableProperty().set(false);
+            Imv_sp2.disableProperty().set(false);
+            Imv_sp3.disableProperty().set(false);
+            parar = true;
             for(Mob monstruo1 : monstruo)
             {
-                monstruo1.iniciar();
+                monstruo1.iniciar();//colocar el otro metodo de pausar 
             }
+            imgPausa.setEffect(new Glow(0));
+            imgPausa.setImage(new Image("/cr/ac/una/defender/resources/pause.png"));
             parar = false;
+
         }
     }
 

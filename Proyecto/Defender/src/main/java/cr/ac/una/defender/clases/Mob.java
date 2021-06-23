@@ -345,8 +345,8 @@ public class Mob implements Accion
         System.out.println("Me paré");
         if(!muerto)
         {
-            translate.pause();
             hilo.pause();
+            translate.pause();
         }
 
     }
@@ -357,8 +357,8 @@ public class Mob implements Accion
         System.out.println("Seguí");
         if(!muerto)
         {
-            translate.play();
             hilo.continuee();
+            translate.play();
 
         }
 

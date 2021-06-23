@@ -5,16 +5,9 @@
  */
 package cr.ac.una.defender.controllers;
 
-import cr.ac.una.defender.clases.*;
 import cr.ac.una.defender.models.*;
-import java.io.*;
-import java.util.*;
-import javafx.beans.property.*;
-import javafx.scene.control.*;
-import javafx.scene.input.*;
 import javafx.scene.media.*;
 import javafx.stage.*;
-import javafx.util.*;
 
 /**
  *
@@ -26,8 +19,9 @@ public abstract class Controller
     private Stage stage;
     private String accion;
     private static UserDto datos = new UserDto();
-    public AudioClip musica;
+    public MediaPlayer musica;
     Boolean completado = false;
+    private int valor;
 
     public Boolean getCompletado()
     {
@@ -72,8 +66,8 @@ public abstract class Controller
 
     public void musica()
     {
-
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Menu.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Menu.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(AudioClip.INDEFINITE);
         musica.setVolume(0.02);
         musica.play();
@@ -82,7 +76,8 @@ public abstract class Controller
 
     public void sonidobotones()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Boton.wav").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Boton.wav").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.04);
         musica.play();
@@ -95,7 +90,8 @@ public abstract class Controller
 
     public void comprado()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Cmonedas.wav").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Cmonedas.wav").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.04);
         musica.play();
@@ -103,7 +99,8 @@ public abstract class Controller
 
     public void disparar()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/flecha.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/flecha.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.07);
         musica.play();
@@ -111,7 +108,8 @@ public abstract class Controller
 
     public void sonidodebatalla()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/campoBatalla.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/campoBatalla.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(AudioClip.INDEFINITE);
         musica.setVolume(0.03);
         musica.play();
@@ -120,7 +118,8 @@ public abstract class Controller
     public void playSound2()
     {
 
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Zombie.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Zombie.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.04);
         musica.play();
@@ -129,7 +128,8 @@ public abstract class Controller
 
     public void playRayo()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Rayo.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Rayo.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(1);
         musica.play();
@@ -137,7 +137,8 @@ public abstract class Controller
 
     public void playFireball()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Fire.wav").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Fire.wav").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(1);
         musica.play();
@@ -145,7 +146,8 @@ public abstract class Controller
 
     public void playFreeze()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/freeze.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/freeze.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(1);
         musica.play();
@@ -154,7 +156,8 @@ public abstract class Controller
     public void playZ()
     {
 
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/zombieauch.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/zombieauch.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.07);
         musica.play();
@@ -163,7 +166,8 @@ public abstract class Controller
 
     public void playC()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Caba.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Caba.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.07);
         musica.play();
@@ -171,7 +175,8 @@ public abstract class Controller
 
     public void plaA()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Alien.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Alien.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.07);
         musica.play();
@@ -179,12 +184,49 @@ public abstract class Controller
 
     public void playR()
     {
-        musica = new AudioClip(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Robot.mp3").toString());
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Robot.mp3").toString());
+        musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.07);
         musica.play();
     }
 
+    public void onAccion(int op)
+    {
+        switch(op)
+        {
+            case 1:
+                this.valor = 1;//regresar a jugar
+            case 2:
+                this.valor = 2;//menu config
+                break;
+            case 3:
+                this.valor = 3;//salir al menu principal
+                break;
+            case 4:
+                this.valor = 4;//reiniciar
+            case 5:
+                this.valor = 5;
+                break;
+            case 6:
+                this.valor = 6;
+                break;
+            default:
+                break;
+        }
+
+    }
+
     public abstract void initialize();
+
+    public int getValor()
+    {
+        return valor;
+    }
+
+    public void setValor(int valor)
+    {
+        this.valor = valor;
+    }
 
 }
