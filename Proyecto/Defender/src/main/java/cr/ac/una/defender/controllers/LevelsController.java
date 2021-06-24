@@ -101,11 +101,19 @@ public class LevelsController extends Controller implements Initializable
     private int radios3;
     @FXML
     private ImageView imgPausa;
+    private int vidaP;
+    private int manaP;
+    private int veloBullets;
+    double progreso;
+    @FXML
+    private Label labelOleadas;
+    boolean poderdispara = true;
 
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-        llenarVariablesJugador();//se encarga de llenar las variavles del jugador 
+
+        llenarVariablesJugador();//se encarga de llenar las variavles del jugador     
         fondo();
         Long esmeraldas = getDatos().getEsmeralda();
         if(getDatos().getLvl().intValue() == 2)
@@ -124,39 +132,53 @@ public class LevelsController extends Controller implements Initializable
         sonidodebatalla();// se encarga de añadir sonido de campo de batalla
         crearmostruos();//crea mostruos
         contarDaamge();//cuenta el daño de los monstruos
+
         grid.addEventFilter(MouseEvent.MOUSE_PRESSED , (MouseEvent mouse) ->
         {
             //este metodo se encarga de disparar desde la "ballesta" hacia los mobs
-            TranslateTransition translate = new TranslateTransition();
-            circle = new Circle();
-            Image im = new Image("/cr/ac/una/defender/resources/bullet.png");
-            circle.setFill(new ImagePattern(im));
-            circle.setRadius(20);
-            grid.getChildren().add(circle);
-            translate.setNode(circle);
-            translate.setByY(mouse.getY() - 80);
-            translate.setByX(mouse.getX() - 32);
-            translate.setDuration(Duration.millis(500));
-            translate.interpolatorProperty().set(Interpolator.EASE_OUT);
-            translate.play();
-            detectcoli(circle);
-            disparar();
-
-            translate.setOnFinished((t) ->
+            if(poderdispara == true)
             {
+                poderdispara = false;
+                TranslateTransition translate = new TranslateTransition();
+                circle = new Circle();
+                Image im = new Image("/cr/ac/una/defender/resources/bullet.png");
+                circle.setFill(new ImagePattern(im));
+                circle.setRadius(20);
+                grid.getChildren().add(circle);
+                translate.setNode(circle);
+                translate.setByY(mouse.getY() - 80);
+                translate.setByX(mouse.getX() - 32);
+                translate.setDuration(Duration.millis(veloBullets));
+                translate.interpolatorProperty().set(Interpolator.EASE_OUT);
+                translate.play();
                 detectcoli(circle);
-                circle.setOpacity(0);
-                circle.disableProperty().set(true);
+                disparar();
 
-            });
+                translate.setOnFinished((t) ->
+                {
+                    poderdispara=true;
+                    detectcoli(circle);
+                    circle.setOpacity(0);
+                    circle.disableProperty().set(true);
+
+                });
+            }
+
         });
-
-        speelFireball();//Drag an drop de los spells
-        spellRayo();//Drag an drop de los spells
-        spellFreeze();//Drag an drop de los spells
+        if(damageBS1 != 0)
+        {
+            speelFireball();//Drag an drop de los spells
+        }
+        if(damageBS2 != 0)
+        {
+            spellRayo();//Drag an drop de los spells
+        }
+        if(damageBS3 != 0)
+        {
+            spellFreeze();//Drag an drop de los spells
+        }
         llenarcosademana();//llenar el mana continuamente
     }
-    public int vidamob = 25;
 
     void fondo()//setear el fondo, cambiar el arma, cambiar el usuario
     {
@@ -221,18 +243,22 @@ public class LevelsController extends Controller implements Initializable
         }
 
     }
+    public int vidamob = 200;
 
     public void crearmostruos()//Se encarga de hcaer graficamente lso mobs en el grid
     {
         oleadas++;
-        vidamob *= 1.5;
+        pgr_lvl.disableProperty().set(true);
+//        pgr_lvl.setProgress(pgr_lvl.getProgress() + 0.25);
+        labelOleadas.setText("Oleada: " + oleadas);
+        vidamob = 200 * oleadas;
 
         for(int i = 0; i < 5; i++)
         {
             if(oleadaM <= 20)// se ecarga de crear estos tipos de mobs con base en las oleadas representando nivel 0-20
             {
                 randparamob = 1;
-                monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 35) + 30 , -950));
 
             }
             else if(oleadaM > 20 && oleadaM <= 40)// se ecarga de crear estos tipos de mobs con base en las oleadas representando nivel 21-40
@@ -241,12 +267,12 @@ public class LevelsController extends Controller implements Initializable
                 randparamob = (int) (Math.random() * 2) + 1;
                 if(randparamob == 1)
                 {
-                    monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -750));
+                    monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 30) + 26 , -950));
 
                 }
                 if(randparamob == 2)
                 {
-                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 30) + 26 , -950));
 
                 }
             }
@@ -256,17 +282,17 @@ public class LevelsController extends Controller implements Initializable
 
                 if(randparamob == 1)
                 {
-                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 28) + 24 , -950));
 
                 }
                 else if(randparamob == 2)
                 {
-                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 28) + 24 , -950));
 
                 }
                 else if(randparamob == 3)
                 {
-                    monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 20) + 15 , -750));
+                    monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 28) + 24 , -950));
 
                 }
 
@@ -277,52 +303,85 @@ public class LevelsController extends Controller implements Initializable
 
                 if(randparamob == 1)
                 {
-                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 24) + 22 , -950));
 
                 }
                 else if(randparamob == 2)
                 {
-                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 24) + 22 , -950));
 
                 }
                 else if(randparamob == 3)
                 {
-                    monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 20) + 15 , -750));
+                    monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 24) + 22 , -950));
 
                 }
                 else if(randparamob == 4)
                 {
-                    monstruo.add(new Caballero(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 20) + 15 , -950));
+                    monstruo.add(new Caballero(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 24) + 12 , -950));
 
                 }
             }
-            else if(oleadaM > 80)// se ecarga de crear estos tipos de mobs con base en las oleadas representando nivel 81-100
+            else if(oleadaM > 80 && oleadaM <= 90)// se ecarga de crear estos tipos de mobs con base en las oleadas representando nivel 81-100
             {
                 randparamob = (int) (Math.random() * 5) + 1;
 
                 if(randparamob == 1)
                 {
-                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 22) + 20 , -950));
 
                 }
                 else if(randparamob == 2)
                 {
-                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 25) + 20 , -950));
+                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 22) + 20 , -950));
 
                 }
                 else if(randparamob == 3)
                 {
-                    monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 20) + 15 , -750));
+                    monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 22) + 15 , -750));
 
                 }
                 else if(randparamob == 4)
                 {
-                    monstruo.add(new Caballero(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 20) + 15 , -950));
+                    monstruo.add(new Caballero(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 22) + 15 , -950));
 
                 }
                 else if(randparamob == 5)
                 {
-                    monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 20) + 15 , -950));
+                    monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 22) + 15 , -950));
+                }
+            }
+            else
+            {
+                randparamob = (int) (Math.random() * 5) + 1;
+
+                if(randparamob == 1)
+                {
+                    monstruo.add(new Zombie(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 17) + 15 , -950));
+
+                }
+                else if(randparamob == 2)
+                {
+                    monstruo.add(new Robott(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 17) + 15 , -950));
+
+                }
+                else if(randparamob == 3)
+                {
+                    monstruo.add(new Alien(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 17) + 15 , -750));
+
+                }
+                else if(randparamob == 4)
+                {
+                    monstruo.add(new Caballero(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 17) + 15 , -950));
+
+                }
+                else if(randparamob == 5)
+                {
+                    monstruo.add(new Star(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 17) + 15 , -950));
+                }
+                else
+                {
+                    monstruo.add(new RedSkull(vidamob , 0 , 0 , 0 , 0 , (int) (Math.random() * 17) + 15 , -950));
                 }
             }
 
@@ -342,17 +401,20 @@ public class LevelsController extends Controller implements Initializable
         pgr_vida.setProgress(pgr_vida.getProgress() - valor);
         if(pgr_vida.getProgress() <= 0)
         {
-            musica.stop();
+            paramusica();
+            taskThread.stop();
+            taskThread3.stop();
             FlowController.getInstance().goVista("PreGame");
         }
     }
 
     public void detectcoli(Circle circle1)//este metodo se encarga de validar la coli de las balas
     {
-
+        int damagefinal = calcularDobleDamage() + calcularTiroDoble();
+        System.out.println("El valor del damage es " + damagefinal);
         for(Mob monstruo1 : monstruo)
         {
-            monstruo1.dect(circle1 , damageB);
+            monstruo1.dect(circle1 , damagefinal * 2);//para poder matar mejor
 
         }
         contarmuetos();
@@ -391,6 +453,50 @@ public class LevelsController extends Controller implements Initializable
         contarmuetos();
     }
 
+    void calcularoeladas()
+    {
+        if(oleadaM < 10)
+        {
+            oleadallegar = 1;
+        }
+        else if(oleadaM > 10 && oleadaM <= 20)
+        {
+            oleadallegar = 2;
+        }
+        else if(oleadaM > 20 && oleadaM <= 30)
+        {
+            oleadallegar = 3;
+        }
+        else if(oleadaM > 30 && oleadaM <= 40)
+        {
+            oleadallegar = 4;
+        }
+        else if(oleadaM > 40 && oleadaM <= 50)
+        {
+            oleadallegar = 5;
+        }
+        else if(oleadaM > 50 && oleadaM <= 60)
+        {
+            oleadallegar = 6;
+        }
+        else if(oleadaM > 60 && oleadaM <= 70)
+        {
+            oleadallegar = 7;
+        }
+        else if(oleadaM > 70 && oleadaM <= 80)
+        {
+            oleadallegar = 8;
+        }
+        else if(oleadaM > 80 && oleadaM <= 90)
+        {
+            oleadallegar = 9;
+        }
+        else
+        {
+            oleadallegar = 10;
+        }
+    }
+
     void contarmuetos()//cuanta la cantidad de muertos para poer pasar de ronda 
     {
         sizeM = monstruo.size();
@@ -417,9 +523,12 @@ public class LevelsController extends Controller implements Initializable
             System.out.println("El dinero fue " + cdinero);
             Lbl_money.setText(String.valueOf(cdinero));
             getDatos().setDinero((long) cdinero);
-            if(oleadas >= oleadaM)
+
+            System.out.println("Oleada llegar " + oleadallegar);
+            if(oleadas >= oleadallegar)
             {
                 taskThread.stop();
+                taskThread3.stop();
                 musica.stop();
                 Long lvl = getDatos().getLvl() + 1;
                 getDatos().setLvl(lvl);
@@ -431,6 +540,7 @@ public class LevelsController extends Controller implements Initializable
             crearmostruos();
         }
     }
+    public int oleadallegar;
 
     public void speelFireball()//drag and drop del spell de fireball
     {
@@ -674,13 +784,119 @@ public class LevelsController extends Controller implements Initializable
 
     }
 
-    public void llenarVariablesJugador()//este metodo se encarga de usar la variable de damage de la base de datos
+    void llenarVida()
     {
-        damageB = getDatos().getLvlFuerza().intValue();
-        damageBS1 = getDatos().getLvlFireBall().intValue();
-        damageBS2 = getDatos().getLvlRayo().intValue();
-        damageBS3 = getDatos().getLvlFreeze().intValue();
-        
+        switch(vidaP)
+        {
+            case 0:
+                vidaP = 100;
+                break;
+            case 1:
+                vidaP = 200;
+                break;
+            case 2:
+                vidaP = 300;
+                break;
+            case 3:
+                vidaP = 400;
+                break;
+
+        }
+    }
+
+    void llenarMana()
+    {
+        switch(manaP)
+        {
+            case 0:
+                manaP = 100;
+                break;
+            case 1:
+                manaP = 200;
+                break;
+            case 2:
+                manaP = 300;
+                break;
+            case 3:
+                manaP = 400;
+                break;
+
+        }
+    }
+
+    int calcularDobleDamage()
+    {
+        int f = damageB;
+        switch(getDatos().getLvlDDamage().intValue())
+        {
+            case 0:
+                int x = (int) (Math.random() * 4) + 1;
+                if(x == 1)
+                {
+                    f *= 2;
+                }
+
+                break;
+            case 1:
+                x = (int) (Math.random() * 4) + 1;
+                if(x == 1 || x == 2)
+                {
+                    f *= 2;
+                }
+                break;
+            case 2:
+                x = (int) (Math.random() * 4) + 1;
+                if(x == 1 || x == 2 || x == 3)
+                {
+                    f *= 2;
+                }
+                break;
+            default:
+                f *= 2;
+                break;
+        }
+
+        return f;
+
+    }
+
+    int calcularTiroDoble()
+    {
+        int f = damageB;
+        switch(getDatos().getLvlTiroDoble().intValue())
+        {
+            case 0:
+                int x = (int) (Math.random() * 4) + 1;
+                if(x == 1)
+                {
+                    f *= 2;
+                }
+
+                break;
+            case 1:
+                x = (int) (Math.random() * 4) + 1;
+                if(x == 1 || x == 2)
+                {
+                    f *= 2;
+                }
+                break;
+            case 2:
+                x = (int) (Math.random() * 4) + 1;
+                if(x == 1 || x == 2 || x == 3)
+                {
+                    f *= 2;
+                }
+                break;
+            default:
+                f *= 2;
+                break;
+        }
+
+        return f;
+    }
+
+    void llenarDamageB()
+    {
         switch(damageB)
         {
             case 0:
@@ -696,6 +912,10 @@ public class LevelsController extends Controller implements Initializable
                 damageB = 100;
                 break;
         }
+    }
+
+    void llenarDamageBS1()
+    {
         switch(damageBS1)//parte del hechizo de fireball
         {
             case 0:
@@ -740,7 +960,10 @@ public class LevelsController extends Controller implements Initializable
                 radios1 = 225;
                 break;
         }
+    }
 
+    void llenarDamageBS2()
+    {
         switch(damageBS2)//parte del hechizo de rayo
         {
             case 0:
@@ -789,6 +1012,10 @@ public class LevelsController extends Controller implements Initializable
                 break;
 
         }
+    }
+
+    void llenarDamageBS3()
+    {
         switch(damageBS3)//parte del hechizo de hielo;
         {
             case 0:
@@ -834,7 +1061,45 @@ public class LevelsController extends Controller implements Initializable
                 break;
 
         }
+    }
 
+    void llenarVeloBullets()
+    {
+        switch(veloBullets)
+        {
+            case 0:
+                veloBullets = 2000;
+                break;
+            case 1:
+                veloBullets = 1500;
+                break;
+            case 2:
+                veloBullets = 1000;
+                break;
+            case 3:
+                veloBullets = 500;
+                break;
+
+        }
+    }
+
+    public void llenarVariablesJugador()//este metodo se encarga de usar la variable de damage de la base de datos
+    {
+        damageB = getDatos().getLvlFuerza().intValue();// damage base
+        damageBS1 = getDatos().getLvlFireBall().intValue();//damage speel 1
+        damageBS2 = getDatos().getLvlRayo().intValue();//damage speel 2
+        damageBS3 = getDatos().getLvlFreeze().intValue();//damage speel 3
+        vidaP = getDatos().getmVida().intValue();//cantidad de vida
+        manaP = getDatos().getmMana().intValue();//cantidad de mana
+        veloBullets = getDatos().getLvlAgilidad().intValue();
+        llenarVeloBullets();
+        llenarDamageB();
+        llenarDamageBS1();
+        llenarDamageBS2();
+        llenarDamageBS3();
+        llenarMana();
+        llenarVida();
+        calcularoeladas();
         System.out.println("El valor del radio del spells 1 es " + radios1);
         System.out.println("El valor del radio del spells 2 es " + radios2);
         System.out.println("El valor del radio del spells 3 es " + radios3);

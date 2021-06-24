@@ -610,25 +610,25 @@ public class PreGameController extends Controller implements Initializable
             switch(agilidad)
             {
                 case 0:
-                    Lbl_info.setText("Incrementa la cantidad de agilidad"
-                              + "Current: " + 10 + " \n"
-                              + "Next: " + 15);
+                    Lbl_info.setText("Incrementa la velocidad de disparo"
+                              + "Current: " + 3 + "seg \n"
+                              + "Next: " + 2);
                     Lbl_ccompra.setText("300");
 
                     sonidobotones();
                     break;
                 case 1:
-                    Lbl_info.setText("Incrementa la cantidad de agilidad"
-                              + "Current: " + 15 + " \n"
-                              + "Next: " + 20);
+                    Lbl_info.setText("Incrementa la velocidad de disparo"
+                              + "Current: " + 2 + " seg\n"
+                              + "Next: " + 1);
                     Lbl_ccompra.setText("600");
 
                     sonidobotones();
                     break;
                 case 2:
-                    Lbl_info.setText("Incrementa la cantidad de agilidad"
-                              + "Current: " + 20 + " \n"
-                              + "Next: " + 25);
+                    Lbl_info.setText("Incrementa la velocidad de disparo"
+                              + "Current: " + 1 + " seg\n"
+                              + "Next: " + 0.5);
                     Lbl_ccompra.setText("800");
 
                     sonidobotones();
@@ -757,24 +757,24 @@ public class PreGameController extends Controller implements Initializable
             {
                 case 0:
                     Lbl_info.setText("Incrementa el porcentaje del daño doble"
-                              + "Current: " + 10 + " \n"
-                              + "Next: " + 20);
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
                     Lbl_ccompra.setText("300");
 
                     sonidobotones();
                     break;
                 case 1:
                     Lbl_info.setText("Incrementa el porcentaje del daño doble"
-                              + "Current: " + 20 + " \n"
-                              + "Next: " + 30);
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
                     Lbl_ccompra.setText("600");
 
                     sonidobotones();
                     break;
                 case 2:
                     Lbl_info.setText("Incrementa el porcentaje del daño doble"
-                              + "Current: " + 30 + " \n"
-                              + "Next: " + 40);
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
                     Lbl_ccompra.setText("800");
 
                     sonidobotones();
@@ -831,24 +831,24 @@ public class PreGameController extends Controller implements Initializable
             {
                 case 0:
                     Lbl_info.setText("Incrementa el porcentajede tiro doble"
-                              + "Current: " + 10 + " \n"
-                              + "Next: " + 20);
+                              + "Current: " + 25 + " \n"
+                              + "Next: " + 50);
                     Lbl_ccompra.setText("300");
 
                     sonidobotones();
                     break;
                 case 1:
                     Lbl_info.setText("Incrementa el porcentajede tiro doble"
-                              + "Current: " + 20 + " \n"
-                              + "Next: " + 30);
+                              + "Current: " + 50 + " \n"
+                              + "Next: " + 75);
                     Lbl_ccompra.setText("600");
 
                     sonidobotones();
                     break;
                 case 2:
                     Lbl_info.setText("Incrementa el porcentajede tiro doble"
-                              + "Current: " + 30 + " \n"
-                              + "Next: " + 40);
+                              + "Current: " + 75 + " \n"
+                              + "Next: " + 100);
                     Lbl_ccompra.setText("800");
 
                     sonidobotones();
@@ -1542,7 +1542,7 @@ public class PreGameController extends Controller implements Initializable
         {
             actuDB();
             Respuesta respuesta = service.guardarUser(getDatos());
-            if(lvl <= 100)
+            if(lvl < 100)
             {
                 FlowController.getInstance().goVista("Levels");
             }

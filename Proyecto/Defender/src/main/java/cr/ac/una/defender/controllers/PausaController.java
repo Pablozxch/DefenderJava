@@ -43,12 +43,15 @@ public class PausaController extends Controller implements Initializable
     }
 
     @FXML
-    private void btnAccionSeguir(ActionEvent event)
+    private void btnAccionSeguir(ActionEvent event)//es para volvert al game
     {
         sonidobotones();
         onAccion(1);
         Stage stage = (Stage) btnSeguir.getScene().getWindow();
         stage.close();
+        boolean x=(boolean) AppContext.getInstance().get("Pausar");
+        System.out.println("El valor es "+ x);
+        AppContext.getInstance().set("Reanudar", true);
     }
 
     @FXML

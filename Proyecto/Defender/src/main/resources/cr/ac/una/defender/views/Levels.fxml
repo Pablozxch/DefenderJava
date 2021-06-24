@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -96,14 +97,20 @@
         </rowConstraints>
       </GridPane>
       <ImageView fx:id="img_ballesta" fitHeight="178.0" fitWidth="267.0" layoutX="68.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" rotate="24.8" />
-      <ProgressBar fx:id="pgr_vida" layoutX="153.0" layoutY="998.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" style="color: red;" />
+      <ProgressBar fx:id="pgr_vida" layoutX="153.0" layoutY="998.0" prefHeight="20.0" prefWidth="290.0" progress="1.0">
+         <effect>
+            <ColorAdjust hue="-0.38" />
+         </effect></ProgressBar>
       <ImageView fx:id="imvUserL" fitHeight="116.0" fitWidth="130.0" layoutX="8.0" layoutY="952.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/ParaLvl.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="pgr_mana" layoutX="156.0" layoutY="1031.0" prefHeight="20.0" prefWidth="290.0" progress="1.0" />
-      <ProgressBar fx:id="pgr_lvl" layoutX="355.0" layoutY="101.0" prefHeight="18.0" prefWidth="421.0" progress="0.0" />
+      <ProgressBar fx:id="pgr_mana" layoutX="156.0" layoutY="1031.0" prefHeight="20.0" prefWidth="290.0" progress="1.0">
+         <effect>
+            <ColorAdjust brightness="0.48" contrast="1.0" hue="-0.05" saturation="-0.1" />
+         </effect></ProgressBar>
+      <ProgressBar fx:id="pgr_lvl" layoutX="286.0" layoutY="113.0" prefHeight="18.0" prefWidth="353.0" progress="0.0" />
       <ImageView fx:id="Imv_sp1" fitHeight="120.0" fitWidth="130.0" layoutX="1583.0" layoutY="303.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/fire.png" />
@@ -119,5 +126,10 @@
             <Image url="@../resources/candado.png" />
          </image>
       </ImageView>
+      <Label fx:id="labelOleadas" alignment="CENTER" contentDisplay="CENTER" layoutX="734.0" layoutY="37.0" prefHeight="70.0" prefWidth="171.0" text="Oleada: " textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
