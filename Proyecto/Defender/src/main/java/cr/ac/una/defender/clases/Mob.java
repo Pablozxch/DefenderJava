@@ -442,6 +442,11 @@ public class Mob implements Accion
                             imagenView.setImage(new Image(current[cont]));
                             cont++;
                         }
+                        if(hilo.pause != true && muerto == true)
+                        {
+                            imagenView.setImage(new Image(current[cont]));
+                            cont++;
+                        }
                         int x = current.length - 1;
                         if(cont > x)
                         {

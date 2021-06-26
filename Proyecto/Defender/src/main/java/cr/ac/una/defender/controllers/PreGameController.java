@@ -8,14 +8,18 @@ package cr.ac.una.defender.controllers;
 import com.jfoenix.controls.*;
 import cr.ac.una.defender.services.*;
 import cr.ac.una.defender.utils.*;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.*;
 import javafx.event.*;
 import javafx.fxml.*;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.stage.*;
 
 /**
  * FXML Controller class
@@ -126,6 +130,7 @@ public class PreGameController extends Controller implements Initializable
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
+        //paramusica();
         llenartodo();//este metodo se encarga de llenar todo lo del usuariuo
         setinfo();//este metodo se encarga de setear la info en pantalla
 
@@ -410,12 +415,12 @@ public class PreGameController extends Controller implements Initializable
             }
 
         }
-        else if(event.getSource() == Btn_upgrade & "1".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "1".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(vida == 0 & dinero >= 200)
+                if(vida == 0 && dinero >= 200)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 200;
@@ -424,7 +429,7 @@ public class PreGameController extends Controller implements Initializable
 
                     acutalizarpantalla();
                 }
-                else if(vida == 1 & dinero >= 400)
+                else if(vida == 1 && dinero >= 400)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 400;
@@ -433,7 +438,7 @@ public class PreGameController extends Controller implements Initializable
 
                     acutalizarpantalla();
                 }
-                else if(vida == 2 & dinero >= 600)
+                else if(vida == 2 && dinero >= 600)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -487,12 +492,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "2".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "2".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(mana == 0 & esmeraldas >= 250)
+                if(mana == 0 && esmeraldas >= 250)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 200;
@@ -501,7 +506,7 @@ public class PreGameController extends Controller implements Initializable
 
                     acutalizarpantalla();
                 }
-                else if(mana == 1 & esmeraldas >= 450)
+                else if(mana == 1 && esmeraldas >= 450)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 400;
@@ -510,7 +515,7 @@ public class PreGameController extends Controller implements Initializable
 
                     acutalizarpantalla();
                 }
-                else if(mana == 2 & esmeraldas >= 650)
+                else if(mana == 2 && esmeraldas >= 650)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -565,12 +570,12 @@ public class PreGameController extends Controller implements Initializable
             }
 
         }
-        else if(event.getSource() == Btn_upgrade & "3".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "3".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(fuerza == 0 & dinero >= 300)
+                if(fuerza == 0 && dinero >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 300;
@@ -578,7 +583,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(fuerza == 1 & dinero >= 600)
+                else if(fuerza == 1 && dinero >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 600;
@@ -587,7 +592,7 @@ public class PreGameController extends Controller implements Initializable
 
                     acutalizarpantalla();
                 }
-                else if(fuerza == 2 & dinero >= 800)
+                else if(fuerza == 2 && dinero >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -640,12 +645,12 @@ public class PreGameController extends Controller implements Initializable
             }
         }
 
-        else if(event.getSource() == Btn_upgrade & "4".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "4".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(agilidad == 0 & dinero >= 300)
+                if(agilidad == 0 && dinero >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 300;
@@ -653,7 +658,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(agilidad == 1 & dinero >= 600)
+                else if(agilidad == 1 && dinero >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 600;
@@ -661,7 +666,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(agilidad == 2 & dinero >= 800)
+                else if(agilidad == 2 && dinero >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -712,12 +717,12 @@ public class PreGameController extends Controller implements Initializable
             }
 
         }
-        else if(event.getSource() == Btn_upgrade & "5".equals(Lbl_info.getId()) & fuerza >= 3)
+        else if(event.getSource() == Btn_upgrade && "5".equals(Lbl_info.getId()) && fuerza >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(retroceso == 0 & dinero >= 300)
+                if(retroceso == 0 && dinero >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 300;
@@ -725,7 +730,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(retroceso == 1 & dinero >= 600)
+                else if(retroceso == 1 && dinero >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 600;
@@ -733,7 +738,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(retroceso == 2 & dinero >= 800)
+                else if(retroceso == 2 && dinero >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -785,12 +790,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "6".equals(Lbl_info.getId()) & agilidad >= 3)
+        else if(event.getSource() == Btn_upgrade && "6".equals(Lbl_info.getId()) && agilidad >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(ddamage == 0 & dinero >= 300)
+                if(ddamage == 0 && dinero >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 300;
@@ -798,7 +803,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(ddamage == 1 & dinero >= 600)
+                else if(ddamage == 1 && dinero >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 600;
@@ -806,7 +811,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(ddamage == 2 & dinero >= 800)
+                else if(ddamage == 2 && dinero >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -859,12 +864,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "7".equals(Lbl_info.getId()) & agilidad >= 3 & fuerza >= 3)
+        else if(event.getSource() == Btn_upgrade && "7".equals(Lbl_info.getId()) && agilidad >= 3 && fuerza >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(tirodobble == 0 & dinero >= 300)
+                if(tirodobble == 0 && dinero >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 300;
@@ -872,7 +877,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(tirodobble == 1 & dinero >= 600)
+                else if(tirodobble == 1 && dinero >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     dinero -= 600;
@@ -880,7 +885,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(tirodobble == 2 & dinero >= 800)
+                else if(tirodobble == 2 && dinero >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -934,12 +939,12 @@ public class PreGameController extends Controller implements Initializable
             }
         }
 
-        else if(event.getSource() == Btn_upgrade & "8".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "8".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(fireball == 0 & esmeraldas >= 300)
+                if(fireball == 0 && esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 300;
@@ -947,7 +952,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(fireball == 1 & esmeraldas >= 600)
+                else if(fireball == 1 && esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 600;
@@ -955,7 +960,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(fireball == 2 & esmeraldas >= 800)
+                else if(fireball == 2 && esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1005,12 +1010,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "11".equals(Lbl_info.getId()) & fireball >= 3)
+        else if(event.getSource() == Btn_upgrade && "11".equals(Lbl_info.getId()) && fireball >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(meteor == 0 & esmeraldas >= 300)
+                if(meteor == 0 && esmeraldas >= 1000)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1000;
@@ -1018,7 +1023,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(meteor == 1 & esmeraldas >= 600)
+                else if(meteor == 1 && esmeraldas >= 1200)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1200;
@@ -1026,7 +1031,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(meteor == 2 & esmeraldas >= 800)
+                else if(meteor == 2 && esmeraldas >= 1400)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1075,12 +1080,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "15".equals(Lbl_info.getId()) & meteor >= 3)
+        else if(event.getSource() == Btn_upgrade && "15".equals(Lbl_info.getId()) && meteor >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(armagedon == 0 & esmeraldas >= 300)
+                if(armagedon == 0 && esmeraldas >= 1800)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1800;
@@ -1088,7 +1093,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(armagedon == 1 & esmeraldas >= 600)
+                else if(armagedon == 1 && esmeraldas >= 2000)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 2000;
@@ -1096,7 +1101,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(armagedon == 2 & esmeraldas >= 800)
+                else if(armagedon == 2 && esmeraldas >= 2400)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1147,12 +1152,12 @@ public class PreGameController extends Controller implements Initializable
             }
         }
 
-        else if(event.getSource() == Btn_upgrade & "9".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "9".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(freeze == 0 & esmeraldas >= 300)
+                if(freeze == 0 && esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 300;
@@ -1160,7 +1165,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(freeze == 1 & esmeraldas >= 600)
+                else if(freeze == 1 && esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 600;
@@ -1168,7 +1173,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(freeze == 2 & esmeraldas >= 800)
+                else if(freeze == 2 && esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1217,12 +1222,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "12".equals(Lbl_info.getId()) & freeze >= 3)
+        else if(event.getSource() == Btn_upgrade && "12".equals(Lbl_info.getId()) && freeze >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(frostage == 0 & esmeraldas >= 300)
+                if(frostage == 0 && esmeraldas >= 1000)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1000;
@@ -1230,7 +1235,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(frostage == 1 & esmeraldas >= 600)
+                else if(frostage == 1 && esmeraldas >= 1200)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1200;
@@ -1238,7 +1243,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(frostage == 2 & esmeraldas >= 800)
+                else if(frostage == 2 && esmeraldas >= 1400)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1287,12 +1292,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "14".equals(Lbl_info.getId()) & frostage >= 3)
+        else if(event.getSource() == Btn_upgrade && "14".equals(Lbl_info.getId()) && frostage >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(aceage == 0 & esmeraldas >= 300)
+                if(aceage == 0 && esmeraldas >= 1800)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1800;
@@ -1300,7 +1305,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(aceage == 1 & esmeraldas >= 600)
+                else if(aceage == 1 && esmeraldas >= 2000)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 2000;
@@ -1308,7 +1313,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(aceage == 2 & esmeraldas >= 800)
+                else if(aceage == 2 && esmeraldas >= 2200)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1358,12 +1363,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "10".equals(Lbl_info.getId()))
+        else if(event.getSource() == Btn_upgrade && "10".equals(Lbl_info.getId()))
         {
             Boolean b = false;
             if(b == false)
             {
-                if(lightning == 0 & esmeraldas >= 300)
+                if(lightning == 0 && esmeraldas >= 300)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 300;
@@ -1371,7 +1376,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(lightning == 1 & esmeraldas >= 600)
+                else if(lightning == 1 && esmeraldas >= 600)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 600;
@@ -1379,7 +1384,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(lightning == 2 & esmeraldas >= 800)
+                else if(lightning == 2 && esmeraldas >= 800)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1428,12 +1433,12 @@ public class PreGameController extends Controller implements Initializable
                     break;
             }
         }
-        else if(event.getSource() == Btn_upgrade & "13".equals(Lbl_info.getId()) & lightning >= 3)
+        else if(event.getSource() == Btn_upgrade && "13".equals(Lbl_info.getId()) && lightning >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(thunderstorm == 0 & esmeraldas >= 300)
+                if(thunderstorm == 0 && esmeraldas >= 1000)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1000;
@@ -1441,7 +1446,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(thunderstorm == 1 & esmeraldas >= 600)
+                else if(thunderstorm == 1 && esmeraldas >= 1200)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1200;
@@ -1449,7 +1454,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(thunderstorm == 2 & esmeraldas >= 800)
+                else if(thunderstorm == 2 && esmeraldas >= 1600)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1500,12 +1505,12 @@ public class PreGameController extends Controller implements Initializable
             }
 
         }
-        else if(event.getSource() == Btn_upgrade & "16".equals(Lbl_info.getId()) & thunderstorm >= 3)
+        else if(event.getSource() == Btn_upgrade && "16".equals(Lbl_info.getId()) && thunderstorm >= 3)
         {
             Boolean b = false;
             if(b == false)
             {
-                if(ragnarok == 0 & esmeraldas >= 300)
+                if(ragnarok == 0 && esmeraldas >= 1800)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 1800;
@@ -1513,7 +1518,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(ragnarok == 1 & esmeraldas >= 600)
+                else if(ragnarok == 1 && esmeraldas >= 2000)
                 {
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
                     esmeraldas -= 2000;
@@ -1521,7 +1526,7 @@ public class PreGameController extends Controller implements Initializable
                     b = true;
                     acutalizarpantalla();
                 }
-                else if(ragnarok == 2 & esmeraldas >= 800)
+                else if(ragnarok == 2 && esmeraldas >= 2200)
                 {
                     b = true;
                     new Mensaje().showModal(Alert.AlertType.INFORMATION , "Compra " , Btn_mana.getScene().getWindow() , "Comprado con exito");
@@ -1541,6 +1546,7 @@ public class PreGameController extends Controller implements Initializable
         else if(event.getSource() == Btn_next)
         {
             actuDB();
+            pasarlvl();
             Respuesta respuesta = service.guardarUser(getDatos());
             if(lvl < 100)
             {
@@ -1548,7 +1554,27 @@ public class PreGameController extends Controller implements Initializable
             }
             else
             {
-                new Mensaje().showModal(Alert.AlertType.INFORMATION , "Completaste el juego" , Btn_mana.getScene().getWindow() , "Felicidades ganaste todos los niveles");
+                try
+                {
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/FinalGame.fxml"));
+                    Parent root3 = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setOpacity(1);
+                    Scene scene = new Scene(root3 , 600 , 400);
+                    stage.setScene(scene);
+                    playFinalGame();
+                    stage.resizableProperty().set(false);
+                    stage.initModality(Modality.WINDOW_MODAL);
+                    stage.initOwner(Btn_lightning.getScene().getWindow());
+                    stage.centerOnScreen();
+                    stage.showAndWait();
+                }
+                catch(IOException ex)
+                {
+                    Logger.getLogger(LevelsController.class.getName()).log(Level.SEVERE , null , ex);
+                }
+                paramusica();
                 FlowController.getInstance().goVista("Menu");
             }
         }

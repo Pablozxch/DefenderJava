@@ -38,6 +38,10 @@ public class MenuController extends Controller implements Initializable
     private JFXButton Btn_salir;
     @FXML
     private JFXButton btnTabla;
+    @FXML
+    private JFXButton btnAcercaDe;
+    @FXML
+    private JFXButton btnAyuda;
 
     /**
      * Initializes the controller class.
@@ -46,7 +50,7 @@ public class MenuController extends Controller implements Initializable
     public void initialize(URL url , ResourceBundle rb)
     {
 
-        musica();
+        playC14();
     }
 
     @Override
@@ -56,7 +60,7 @@ public class MenuController extends Controller implements Initializable
     }
 
     @FXML
-    private void click(ActionEvent event)
+    private void click(ActionEvent event) throws IOException
     {
         if(event.getSource() == Btn_play)
         {
@@ -69,14 +73,44 @@ public class MenuController extends Controller implements Initializable
             sonidobotones();
             FlowController.getInstance().salir();
         }
-    }
-
-    @FXML
-    private void clicks(ActionEvent event) throws IOException
-    {
         if(event.getSource() == btnTabla)
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/Puntuacion.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+
+            stage.setOpacity(1);
+            Scene scene = new Scene(root , 647 , 474);
+            stage.setScene(scene);
+            stage.resizableProperty().set(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(Btn_play.getScene().getWindow());
+            stage.centerOnScreen();
+            stage.showAndWait();
+
+        }
+        if(event.getSource() == btnAcercaDe)
+        {
+            sonidobotones();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/AcercaDe.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+
+            stage.setOpacity(1);
+            Scene scene = new Scene(root , 600 , 400);
+            stage.setScene(scene);
+            stage.resizableProperty().set(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(Btn_play.getScene().getWindow());
+            stage.centerOnScreen();
+            stage.showAndWait();
+
+        }
+        if(event.getSource() == btnAyuda)
+        {
+            sonidobotones();
+            paramusica();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/ComoJugar.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
 

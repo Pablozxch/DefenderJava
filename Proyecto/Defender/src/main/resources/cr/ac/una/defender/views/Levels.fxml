@@ -110,7 +110,6 @@
          <effect>
             <ColorAdjust brightness="0.48" contrast="1.0" hue="-0.05" saturation="-0.1" />
          </effect></ProgressBar>
-      <ProgressBar fx:id="pgr_lvl" layoutX="286.0" layoutY="113.0" prefHeight="18.0" prefWidth="353.0" progress="0.0" />
       <ImageView fx:id="Imv_sp1" fitHeight="120.0" fitWidth="130.0" layoutX="1583.0" layoutY="303.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/fire.png" />
@@ -126,7 +125,7 @@
             <Image url="@../resources/candado.png" />
          </image>
       </ImageView>
-      <Label fx:id="labelOleadas" alignment="CENTER" contentDisplay="CENTER" layoutX="734.0" layoutY="37.0" prefHeight="70.0" prefWidth="171.0" text="Oleada: " textFill="WHITE">
+      <Label fx:id="labelOleadas" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="37.0" prefHeight="70.0" prefWidth="171.0" text="Oleada: " textFill="WHITE">
          <font>
             <Font size="35.0" />
          </font>

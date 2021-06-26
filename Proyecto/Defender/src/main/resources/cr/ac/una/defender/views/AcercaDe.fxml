@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.AcercaDeController">
+   <children>
+      <ImageView fitHeight="406.0" fitWidth="608.0" layoutX="-3.0" layoutY="-2.0">
+         <image>
+            <Image url="@../resources/acercaDe.gif" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnBack" contentDisplay="GRAPHIC_ONLY" layoutX="556.0" layoutY="14.0" onAction="#click" prefHeight="25.0" prefWidth="35.0">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../resources/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="104.0" layoutY="46.0" prefHeight="63.0" prefWidth="154.0" text="Integrantes" textFill="#757474">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="101.0" text="Jose Pablo ELizondo Pérez">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="258.0" layoutY="152.0" text="Kevin Andrés Fallas C">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="211.0" layoutY="254.0" text="2021">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

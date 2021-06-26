@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.defender.controllers.ComoJugarController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="611.0" layoutX="-8.0" layoutY="-1.0">
+         <image>
+            <Image url="@../resources/ComoJugar.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="25.0" text="Como jugar">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="70.0" style="-fx-background-color: lightblue;" text="1: El click izquierdo dispara">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="98.0" prefHeight="21.0" prefWidth="504.0" style="-fx-background-color: lightblue;" text="2: Los montruos te dan oro y con ese oro se puyeden mejorarlos poderes">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="132.0" style="-fx-background-color: lightblue;" text="3:  La suma de la muerte de los mobs se dan al finalizar cada ronda">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="255.0" text="4: Los hechizos se pueden usar cuando se tengan desbloqueados">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="161.0" style="-fx-background-color: lightblue;" text="4: Cada 10 niveles recibes gemas gratis ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

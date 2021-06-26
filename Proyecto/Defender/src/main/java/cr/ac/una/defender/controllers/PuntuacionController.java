@@ -26,9 +26,6 @@ public class PuntuacionController implements Initializable
 
     @FXML
     private TableView tblPuntajes;
-    @FXML
-    private JFXButton btnSalir;
-    @FXML
     private JFXButton btnBack;
 
     /**

@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.scene.image.*;
+import javafx.stage.*;
 
 /**
  * JavaFX App
@@ -24,7 +25,6 @@ public class App extends Application
         FlowController.getInstance().InitializeFlow(stage , null);
         stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
         stage.setTitle("Defender");
-        //FlowController.getInstance().goVista("Menu");
 
         FlowController.getInstance().goVista("Login");
     }

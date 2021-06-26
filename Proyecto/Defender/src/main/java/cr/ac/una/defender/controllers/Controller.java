@@ -135,6 +135,15 @@ public abstract class Controller
         musica.play();
     }
 
+    public void playC14()
+    {
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/C14.mp3").toString());
+        musica = new MediaPlayer(audio);
+        musica.setCycleCount(AudioClip.INDEFINITE);
+        musica.setVolume(0.5);
+        musica.play();
+    }
+
     public void playFireball()
     {
         Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Fire.wav").toString());
@@ -185,6 +194,43 @@ public abstract class Controller
     public void playR()
     {
         Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Robot.mp3").toString());
+        musica = new MediaPlayer(audio);
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
+        musica.play();
+    }
+
+    public void pasarlvl()
+    {
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/ParaPasarLvl.mp3").toString());
+        musica = new MediaPlayer(audio);
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
+        musica.play();
+    }
+
+    public void playlevelcomplete()
+    {
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/LvlComplete.mp3").toString());
+        musica = new MediaPlayer(audio);
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
+        musica.play();
+    }
+
+    public void playFinalGame()
+
+    {
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/FinalGame.mp3").toString());
+        musica = new MediaPlayer(audio);
+        musica.setCycleCount(1);
+        musica.setVolume(0.07);
+        musica.play();
+    }
+
+    public void playPerdio()
+    {
+        Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Perdio.mp3").toString());
         musica = new MediaPlayer(audio);
         musica.setCycleCount(1);
         musica.setVolume(0.07);
