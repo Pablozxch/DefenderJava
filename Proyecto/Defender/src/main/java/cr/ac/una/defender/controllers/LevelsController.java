@@ -552,11 +552,10 @@ public class LevelsController extends Controller implements Initializable
         {
             System.out.println("Buenas");
             grid.getChildren().clear();
-            dinero = sizeM * 25;
+            dinero = sizeM * (25*oleadaM);
             monstruo.clear();
             imagenCrear.clear();
             int cdinero = dinero + dinero2;
-            System.out.println("El dinero fue " + dinero);
             System.out.println("El dinero fue " + cdinero);
             Lbl_money.setText(String.valueOf(cdinero));
             getDatos().setDinero((long) cdinero);
