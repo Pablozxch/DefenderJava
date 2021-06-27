@@ -111,7 +111,7 @@ public abstract class Controller
         Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/campoBatalla.mp3").toString());
         musica = new MediaPlayer(audio);
         musica.setCycleCount(AudioClip.INDEFINITE);
-        musica.setVolume(0.03);
+        musica.setVolume(0.06);
         musica.play();
     }
 

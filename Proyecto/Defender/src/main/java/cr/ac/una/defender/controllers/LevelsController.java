@@ -113,9 +113,10 @@ public class LevelsController extends Controller implements Initializable
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-
+    sonidodebatalla();
         llenarVariablesJugador();//se encarga de llenar las variavles del jugador     
         fondo();
+        
         Long esmeraldas = getDatos().getEsmeralda();
         switch(getDatos().getLvl().intValue())
         {
@@ -149,7 +150,6 @@ public class LevelsController extends Controller implements Initializable
             default:
                 break;
         }
-        sonidodebatalla();// se encarga de añadir sonido de campo de batalla
         crearmostruos();//crea mostruos
         contarDaamge();//cuenta el daño de los monstruos
 
@@ -405,35 +405,41 @@ public class LevelsController extends Controller implements Initializable
 
     public void setvpro(double valor)//este metodo se encarga de manejar la vida del usuario, si pierde gg
     {
-        vidaP = vidaP - valor*1000;
+        vidaP = vidaP - valor * 1000;
         if(vidaP <= 100)
         {
             pgr_vida.setProgress(pgr_vida.getProgress() - valor);
             if(pgr_vida.getProgress() <= 0)
             {
-                try
+                if(gameOver == false)
                 {
-                    paramusica();
-                    taskThread.stop();
-                    taskThread3.stop();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/Perdio.fxml"));
-                    Parent root2 = fxmlLoader.load();
-                    Stage stage = new Stage();
-                    stage.setOpacity(1);
-                    Scene scene = new Scene(root2 , 600 , 400);
-                    stage.setScene(scene);
-                    playPerdio();
-                    stage.resizableProperty().set(false);
-                    stage.initModality(Modality.WINDOW_MODAL);
-                    stage.initOwner(Btn_pause.getScene().getWindow());
-                    stage.centerOnScreen();
-                    stage.showAndWait();
-                    FlowController.getInstance().goVista("PreGame");
+                    gameOver=true;
+                    try
+                    {
+
+                        paramusica();
+                        taskThread.stop();
+                        taskThread3.stop();
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/Perdio.fxml"));
+                        Parent root2 = fxmlLoader.load();
+                        Stage stage = new Stage();
+                        stage.setOpacity(1);
+                        Scene scene = new Scene(root2 , 600 , 400);
+                        stage.setScene(scene);
+                        playPerdio();
+                        stage.resizableProperty().set(false);
+                        stage.initModality(Modality.WINDOW_MODAL);
+                        stage.initOwner(Btn_pause.getScene().getWindow());
+                        stage.centerOnScreen();
+                        stage.showAndWait();
+                        FlowController.getInstance().goVista("PreGame");
+                    }
+                    catch(IOException ex)
+                    {
+                        Logger.getLogger(LevelsController.class.getName()).log(Level.SEVERE , null , ex);
+                    }
                 }
-                catch(IOException ex)
-                {
-                    Logger.getLogger(LevelsController.class.getName()).log(Level.SEVERE , null , ex);
-                }
+
             }
         }
 
@@ -648,7 +654,11 @@ public class LevelsController extends Controller implements Initializable
                         {
                             pgr_mana.setProgress(pgr_mana.getProgress() - 0.02 * getDatos().getLvlFreeze());
                         }
-                        manaP = 20 * getDatos().getLvlFreeze();
+                        else
+                        {
+                            manaP = 20 * getDatos().getLvlFreeze();
+                        }
+
                         detectcolispells1(circle);
                         circle.setOpacity(0);
                         circle.disableProperty().set(true);
@@ -717,9 +727,13 @@ public class LevelsController extends Controller implements Initializable
                         playRayo();
                         if(manaP <= 100)
                         {
-                            pgr_mana.setProgress(pgr_mana.getProgress() - 0.005 * getDatos().getLvlFreeze());
+                            pgr_mana.setProgress(pgr_mana.getProgress() - 0.05 * getDatos().getLvlFreeze());
                         }
-                        manaP = 40 * getDatos().getLvlFreeze();
+                        else
+                        {
+                            manaP = 40 * getDatos().getLvlFreeze();
+                        }
+
                         detectcolispells2(circle);
                         circle.setOpacity(0);
                         circle.disableProperty().set(true);
@@ -790,7 +804,11 @@ public class LevelsController extends Controller implements Initializable
                         {
                             pgr_mana.setProgress(pgr_mana.getProgress() - 0.010 * getDatos().getLvlFreeze());
                         }
-                        manaP = 80 * getDatos().getLvlFreeze();
+                        else
+                        {
+                            manaP = 80 * getDatos().getLvlFreeze();
+                        }
+
                         detectcolispells3(circle);
                         circle.setOpacity(0);
                         circle.disableProperty().set(true);
@@ -1218,8 +1236,8 @@ public class LevelsController extends Controller implements Initializable
 
                         public void run()
                         {
-                            pgr_mana.setProgress(pgr_mana.getProgress() + 0.005);
-                            if(pgr_mana.getProgress()==1)
+                            pgr_mana.setProgress(pgr_mana.getProgress() + 0.0009);
+                            if(pgr_mana.getProgress() == 1)
                             {
                                 llenarMana();
                             }

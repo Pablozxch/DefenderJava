@@ -150,7 +150,7 @@ public class UserDto
     {
         if(lvl != null)
         {
-            return Long.valueOf(lvl.get());
+            return lvl.get();
         }
         else
         {
@@ -218,7 +218,7 @@ public class UserDto
     {
         if(dinero != null)
         {
-            return Long.valueOf(dinero.get());
+            return dinero.get();
         }
         else
         {
@@ -235,7 +235,7 @@ public class UserDto
     {
         if(esmeralda != null)
         {
-            return Long.valueOf(esmeralda.get());
+            return esmeralda.get();
         }
         else
         {

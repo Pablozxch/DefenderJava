@@ -357,8 +357,13 @@ public class Mob implements Accion
         System.out.println("Seguí");
         if(!muerto)
         {
+            if(current != ataque)
+            {
+                translate.play();
+
+            }
+
             hilo.continuee();
-            translate.play();
 
         }
 
