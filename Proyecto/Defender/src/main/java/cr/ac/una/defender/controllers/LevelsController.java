@@ -1253,21 +1253,6 @@ public class LevelsController extends Controller implements Initializable
     }
     public Boolean parar = false;
 
-    public void llamarPausa() throws IOException
-    {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/Pausa.fxml"));
-//        Parent root = fxmlLoader.load();
-//        Stage stage = new Stage();
-//        stage.setOpacity(1);
-//        Scene scene = new Scene(root , 335 , 313);
-//        stage.setScene(scene);
-//        stage.resizableProperty().set(false);
-//        stage.initModality(Modality.WINDOW_MODAL);
-//        stage.initOwner(Btn_pause.getScene().getWindow());
-//        stage.centerOnScreen();
-//        stage.showAndWait();
-    }
-
     @FXML
     private void click(ActionEvent event) throws IOException//detecta los clicks para pausar el juego
     {
@@ -1286,7 +1271,6 @@ public class LevelsController extends Controller implements Initializable
             {
                 monstruo1.pausar();//colocar el otro metodo de pausar 
             }
-            llamarPausa();
 
         }
         else if(event.getSource() == Btn_pause && parar == true)
