@@ -131,6 +131,7 @@ public class PreGameController extends Controller implements Initializable
     public void initialize(URL url , ResourceBundle rb)
     {
         //paramusica();
+        playC14();
         llenartodo();//este metodo se encarga de llenar todo lo del usuariuo
         setinfo();//este metodo se encarga de setear la info en pantalla
 
@@ -1545,6 +1546,8 @@ public class PreGameController extends Controller implements Initializable
 
         else if(event.getSource() == Btn_next)
         {
+            musica.stop();
+            paramusica();
             actuDB();
             pasarlvl();
             Respuesta respuesta = service.guardarUser(getDatos());
@@ -1583,6 +1586,7 @@ public class PreGameController extends Controller implements Initializable
     @Override
     public void initialize()
     {
+        playC14();
 //        llenartodo();
 //        setinfo();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

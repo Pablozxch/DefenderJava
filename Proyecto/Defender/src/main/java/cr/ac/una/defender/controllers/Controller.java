@@ -83,11 +83,6 @@ public abstract class Controller
         musica.play();
     }
 
-    public void paramusica()
-    {
-        musica.stop();
-    }
-
     public void comprado()
     {
         Media audio = new Media(this.getClass().getResource("/cr/ac/una/defender/resources/sonidos/Cmonedas.wav").toString());
@@ -275,4 +270,8 @@ public abstract class Controller
         this.valor = valor;
     }
 
+    public void paramusica()
+    {
+        musica.stop();
+    }
 }

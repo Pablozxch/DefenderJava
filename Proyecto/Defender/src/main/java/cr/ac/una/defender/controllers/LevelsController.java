@@ -113,10 +113,10 @@ public class LevelsController extends Controller implements Initializable
     @Override
     public void initialize(URL url , ResourceBundle rb)
     {
-    sonidodebatalla();
+        sonidodebatalla();
         llenarVariablesJugador();//se encarga de llenar las variavles del jugador     
         fondo();
-        
+
         Long esmeraldas = getDatos().getEsmeralda();
         switch(getDatos().getLvl().intValue())
         {
@@ -413,7 +413,7 @@ public class LevelsController extends Controller implements Initializable
             {
                 if(gameOver == false)
                 {
-                    gameOver=true;
+                    gameOver = true;
                     try
                     {
 
@@ -424,6 +424,8 @@ public class LevelsController extends Controller implements Initializable
                         Parent root2 = fxmlLoader.load();
                         Stage stage = new Stage();
                         stage.setOpacity(1);
+                        stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
+                        stage.setTitle("Defender");
                         Scene scene = new Scene(root2 , 600 , 400);
                         stage.setScene(scene);
                         playPerdio();
@@ -552,7 +554,7 @@ public class LevelsController extends Controller implements Initializable
         {
             System.out.println("Buenas");
             grid.getChildren().clear();
-            dinero = sizeM * (25*oleadaM);
+            dinero = sizeM * (25 * oleadaM);
             monstruo.clear();
             imagenCrear.clear();
             int cdinero = dinero + dinero2;
@@ -579,6 +581,8 @@ public class LevelsController extends Controller implements Initializable
                     stage.setOpacity(1);
                     Scene scene = new Scene(root3 , 600 , 400);
                     stage.setScene(scene);
+                    stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
+                    stage.setTitle("Defender");
                     playlevelcomplete();
                     stage.resizableProperty().set(false);
                     stage.initModality(Modality.WINDOW_MODAL);

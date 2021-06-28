@@ -50,7 +50,7 @@ public class MenuController extends Controller implements Initializable
     public void initialize(URL url , ResourceBundle rb)
     {
 
-        playC14();
+        musica();
     }
 
     @Override
@@ -64,17 +64,18 @@ public class MenuController extends Controller implements Initializable
     {
         if(event.getSource() == Btn_play)
         {
+            paramusica();
             musica.stop();
             sonidobotones();
             FlowController.getInstance().goVista("PreGame");
         }
-        if(event.getSource() == Btn_salir)
+        else if(event.getSource() == Btn_salir)
         {
             sonidobotones();
             paramusica();
             FlowController.getInstance().salir();
         }
-        if(event.getSource() == btnTabla)
+        else if(event.getSource() == btnTabla)
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/Puntuacion.fxml"));
             Parent root = fxmlLoader.load();
@@ -82,6 +83,8 @@ public class MenuController extends Controller implements Initializable
             stage.setOpacity(1);
             Scene scene = new Scene(root , 647 , 474);
             stage.setScene(scene);
+            stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
+            stage.setTitle("Defender");
             stage.resizableProperty().set(false);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(Btn_play.getScene().getWindow());
@@ -89,7 +92,7 @@ public class MenuController extends Controller implements Initializable
             stage.showAndWait();
 
         }
-        if(event.getSource() == btnAcercaDe)
+        else if(event.getSource() == btnAcercaDe)
         {
             sonidobotones();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/AcercaDe.fxml"));
@@ -98,6 +101,8 @@ public class MenuController extends Controller implements Initializable
             stage.setOpacity(1);
             Scene scene = new Scene(root , 600 , 400);
             stage.setScene(scene);
+            stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
+            stage.setTitle("Defender");
             stage.resizableProperty().set(false);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(Btn_play.getScene().getWindow());
@@ -105,16 +110,17 @@ public class MenuController extends Controller implements Initializable
             stage.showAndWait();
 
         }
-        if(event.getSource() == btnAyuda)
+        else if(event.getSource() == btnAyuda)
         {
             sonidobotones();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cr/ac/una/defender/views/ComoJugar.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
-
             stage.setOpacity(1);
             Scene scene = new Scene(root , 600 , 400);
             stage.setScene(scene);
+            stage.getIcons().add(new Image("/cr/ac/una/defender/resources/Logo.png"));
+            stage.setTitle("Defender");
             stage.resizableProperty().set(false);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(Btn_play.getScene().getWindow());
